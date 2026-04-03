@@ -1,0 +1,22 @@
+# Gradle
+.gradle/
+build/
+**/build/
+
+# Android local config
+local.properties
+
+# IDE
+.idea/
+*.iml
+
+# Keystore
+*.jks
+*.keystore
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Claude memory (local session data)
+.claude/

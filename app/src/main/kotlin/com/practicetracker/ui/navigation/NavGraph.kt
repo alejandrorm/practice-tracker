@@ -12,7 +12,9 @@ import com.practicetracker.ui.organize.piece.PieceListScreen
 import com.practicetracker.ui.organize.plan.PlanEditorScreen
 import com.practicetracker.ui.organize.plan.PlanListScreen
 import com.practicetracker.ui.organize.skill.SkillLibraryScreen
+import com.practicetracker.ui.practice.ActiveSessionScreen
 import com.practicetracker.ui.practice.PracticeScreen
+import com.practicetracker.ui.practice.SessionSummaryScreen
 import com.practicetracker.ui.settings.SettingsScreen
 import com.practicetracker.ui.stats.StatsScreen
 
@@ -26,7 +28,47 @@ fun AppNavGraph(
         navController = navController,
         startDestination = startDestination
     ) {
-        composable(Routes.PRACTICE) { PracticeScreen() }
+        composable(Routes.PRACTICE) {
+            PracticeScreen(
+                onNavigateToActiveSession = { sessionId ->
+                    navController.navigate(Routes.activeSession(sessionId))
+                },
+                onNavigateToOrganize = {
+                    navController.navigate(Routes.ORGANIZE) {
+                        launchSingleTop = true
+                        restoreState = true
+                    }
+                }
+            )
+        }
+        composable(
+            route = Routes.ACTIVE_SESSION,
+            arguments = listOf(navArgument("sessionId") { type = NavType.StringType })
+        ) { backStackEntry ->
+            val sessionId = backStackEntry.arguments?.getString("sessionId") ?: return@composable
+            ActiveSessionScreen(
+                sessionId = sessionId,
+                onSessionEnded = { id ->
+                    navController.navigate(Routes.sessionSummary(id)) {
+                        popUpTo(Routes.PRACTICE) { inclusive = false }
+                    }
+                }
+            )
+        }
+        composable(
+            route = Routes.SESSION_SUMMARY,
+            arguments = listOf(navArgument("sessionId") { type = NavType.StringType })
+        ) { backStackEntry ->
+            val sessionId = backStackEntry.arguments?.getString("sessionId") ?: return@composable
+            SessionSummaryScreen(
+                sessionId = sessionId,
+                onDone = {
+                    navController.navigate(Routes.PRACTICE) {
+                        popUpTo(Routes.PRACTICE) { inclusive = true }
+                    }
+                }
+            )
+        }
         composable(Routes.STATS) { StatsScreen() }
         composable(Routes.ORGANIZE) {
             OrganizeScreen(

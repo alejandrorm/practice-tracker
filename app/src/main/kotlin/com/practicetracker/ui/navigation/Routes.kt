@@ -17,6 +17,12 @@ object Routes {
     const val PLAN_EDITOR   = "plan_editor/{planId}"
     const val SKILL_LIBRARY = "skill_library"
 
+    // Practice sub-destinations
+    const val ACTIVE_SESSION  = "practice/active/{sessionId}"
+    const val SESSION_SUMMARY = "practice/summary/{sessionId}"
+
     fun pieceEditor(pieceId: String = "new") = "piece_editor/$pieceId"
     fun planEditor(planId: String = "new") = "plan_editor/$planId"
+    fun activeSession(sessionId: String)  = "practice/active/$sessionId"
+    fun sessionSummary(sessionId: String) = "practice/summary/$sessionId"
 }

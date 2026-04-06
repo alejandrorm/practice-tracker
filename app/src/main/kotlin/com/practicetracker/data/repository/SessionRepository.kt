@@ -1,5 +1,6 @@
 package com.practicetracker.data.repository
 
+import com.practicetracker.data.db.dao.PieceStatRow
 import com.practicetracker.data.db.dao.SessionDao
 import com.practicetracker.data.db.entity.SkillCheckEntity
 import com.practicetracker.data.mapper.toDomain
@@ -89,6 +90,9 @@ class SessionRepository @Inject constructor(private val sessionDao: SessionDao) 
 
     fun getTotalMinutesInRange(start: LocalDate, end: LocalDate): Flow<Int> =
         sessionDao.getTotalMinutesInRange(start, end)
+
+    fun getPieceStatsInRange(start: LocalDate, end: LocalDate): Flow<List<PieceStatRow>> =
+        sessionDao.getPieceStatsInRange(start, end)
 
     fun getSessionCountInRange(start: LocalDate, end: LocalDate): Flow<Int> =
         sessionDao.getSessionCountInRange(start, end)

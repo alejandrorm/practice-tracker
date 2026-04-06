@@ -79,4 +79,24 @@ interface SessionDao {
 
     @Query("SELECT COUNT(*) FROM skill_checks WHERE skillId = :skillId")
     fun getTotalCheckCountForSkill(skillId: String): Flow<Int>
+
+    // Per-piece stats for the stats dashboard
+    @Query("""
+        SELECT p.id AS pieceId, p.title AS pieceName,
+            COALESCE(SUM(
+                CASE WHEN se.startTime IS NOT NULL AND se.endTime IS NOT NULL
+                THEN (se.endTime - se.startTime) / 60000
+                ELSE 0 END
+            ), 0) AS totalMinutes,
+            COUNT(DISTINCT s.id) AS sessionCount
+        FROM session_entries se
+        INNER JOIN practice_sessions s ON se.sessionId = s.id
+        INNER JOIN pieces p ON se.pieceId = p.id
+        WHERE s.date BETWEEN :start AND :end
+          AND s.endTime IS NOT NULL
+          AND se.skipped = 0
+        GROUP BY se.pieceId
+        ORDER BY totalMinutes DESC
+    """)
+    fun getPieceStatsInRange(start: LocalDate, end: LocalDate): Flow<List<PieceStatRow>>
 }

@@ -7,7 +7,7 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.KeyboardArrowDown
@@ -54,7 +54,7 @@ fun PieceEditorScreen(
                 title = { Text(if (viewModel.isNewPiece) "New Piece" else "Edit Piece") },
                 navigationIcon = {
                     IconButton(onClick = onNavigateBack) {
-                        Icon(Icons.Default.ArrowBack, contentDescription = "Back")
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
                     }
                 },
                 actions = {
@@ -170,7 +170,7 @@ fun PieceEditorScreen(
             }
 
             // Skills section
-            Divider()
+            HorizontalDivider()
             Text(
                 text = "Skills",
                 style = MaterialTheme.typography.titleMedium,
@@ -191,7 +191,7 @@ fun PieceEditorScreen(
                     label = { Text("Search or add skill") },
                     modifier = Modifier
                         .fillMaxWidth()
-                        .menuAnchor()
+                        .menuAnchor(type = MenuAnchorType.PrimaryEditable, enabled = true)
                 )
                 ExposedDropdownMenu(
                     expanded = showSkillDropdown && (skillSearchResults.isNotEmpty() || skillSearchQuery.isNotBlank()),
@@ -240,7 +240,7 @@ fun PieceEditorScreen(
 
             // Attached skills list
             attachedSkills.forEachIndexed { index, skill ->
-                if (index > 0) Divider()
+                if (index > 0) HorizontalDivider()
                 SkillRow(
                     skill = skill,
                     canMoveUp = index > 0,

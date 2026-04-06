@@ -61,7 +61,7 @@ fun PiecePickerSheet(
                             onDismiss()
                         }
                     )
-                    Divider()
+                    HorizontalDivider()
                 }
 
                 if (filteredPieces.isEmpty() && searchQuery.isNotBlank()) {

@@ -7,7 +7,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.KeyboardArrowDown
@@ -53,7 +53,7 @@ fun PlanEditorScreen(
                 title = { Text(if (viewModel.isNewPlan) "New Plan" else "Edit Plan") },
                 navigationIcon = {
                     IconButton(onClick = onNavigateBack) {
-                        Icon(Icons.Default.ArrowBack, contentDescription = "Back")
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
                     }
                 },
                 actions = {
@@ -138,7 +138,7 @@ fun PlanEditorScreen(
             }
 
             // Pieces section
-            Divider()
+            HorizontalDivider()
             Text(
                 text = "Pieces",
                 style = MaterialTheme.typography.titleMedium,
@@ -146,7 +146,7 @@ fun PlanEditorScreen(
             )
 
             planEntries.forEachIndexed { index, model ->
-                if (index > 0) Divider()
+                if (index > 0) HorizontalDivider()
                 PlanEntryRow(
                     model = model,
                     index = index,
@@ -169,7 +169,7 @@ fun PlanEditorScreen(
             }
 
             // Suggestions section
-            Divider()
+            HorizontalDivider()
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween,

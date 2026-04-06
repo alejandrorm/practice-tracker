@@ -16,6 +16,9 @@ import com.practicetracker.ui.practice.ActiveSessionScreen
 import com.practicetracker.ui.practice.PracticeScreen
 import com.practicetracker.ui.practice.SessionSummaryScreen
 import com.practicetracker.ui.settings.SettingsScreen
+import com.practicetracker.ui.stats.HistoryListScreen
+import com.practicetracker.ui.stats.PieceDrillDownScreen
+import com.practicetracker.ui.stats.SkillDrillDownScreen
 import com.practicetracker.ui.stats.StatsScreen
 
 @Composable
@@ -69,7 +72,49 @@ fun AppNavGraph(
                 }
             )
         }
-        composable(Routes.STATS) { StatsScreen() }
+        composable(Routes.STATS) {
+            StatsScreen(
+                onNavigateToPieceDrillDown = { pieceId ->
+                    navController.navigate(Routes.pieceDrillDown(pieceId))
+                },
+                onNavigateToHistory = { navController.navigate(Routes.HISTORY_LIST) }
+            )
+        }
+        composable(Routes.HISTORY_LIST) {
+            HistoryListScreen(
+                onNavigateBack = { navController.popBackStack() },
+                onNavigateToSession = { sessionId ->
+                    navController.navigate(Routes.historySession(sessionId))
+                }
+            )
+        }
+        composable(
+            route = Routes.HISTORY_SESSION,
+            arguments = listOf(navArgument("sessionId") { type = NavType.StringType })
+        ) { backStackEntry ->
+            val sessionId = backStackEntry.arguments?.getString("sessionId") ?: return@composable
+            SessionSummaryScreen(
+                sessionId = sessionId,
+                onDone = { navController.popBackStack() }
+            )
+        }
+        composable(
+            route = Routes.PIECE_DRILL_DOWN,
+            arguments = listOf(navArgument("pieceId") { type = NavType.StringType })
+        ) {
+            PieceDrillDownScreen(
+                onNavigateBack = { navController.popBackStack() },
+                onNavigateToSkillDrillDown = { skillId ->
+                    navController.navigate(Routes.skillDrillDown(skillId))
+                }
+            )
+        }
+        composable(
+            route = Routes.SKILL_DRILL_DOWN,
+            arguments = listOf(navArgument("skillId") { type = NavType.StringType })
+        ) {
+            SkillDrillDownScreen(onNavigateBack = { navController.popBackStack() })
+        }
         composable(Routes.ORGANIZE) {
             OrganizeScreen(
                 onNavigateToPlanList = { navController.navigate(Routes.PLAN_LIST) },

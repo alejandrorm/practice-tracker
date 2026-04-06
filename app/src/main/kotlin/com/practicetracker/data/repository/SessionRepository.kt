@@ -1,7 +1,10 @@
 package com.practicetracker.data.repository
 
+import com.practicetracker.data.db.dao.PieceSessionRow
 import com.practicetracker.data.db.dao.PieceStatRow
 import com.practicetracker.data.db.dao.SessionDao
+import com.practicetracker.data.db.dao.SkillCheckFreqRow
+import com.practicetracker.data.db.dao.SkillSessionRow
 import com.practicetracker.data.db.entity.SkillCheckEntity
 import com.practicetracker.data.mapper.toDomain
 import com.practicetracker.domain.model.PracticeSession
@@ -93,6 +96,15 @@ class SessionRepository @Inject constructor(private val sessionDao: SessionDao) 
 
     fun getPieceStatsInRange(start: LocalDate, end: LocalDate): Flow<List<PieceStatRow>> =
         sessionDao.getPieceStatsInRange(start, end)
+
+    fun getSkillFrequencyForPiece(pieceId: String): Flow<List<SkillCheckFreqRow>> =
+        sessionDao.getSkillFrequencyForPiece(pieceId)
+
+    fun getSessionRowsForPiece(pieceId: String): Flow<List<PieceSessionRow>> =
+        sessionDao.getSessionRowsForPiece(pieceId)
+
+    fun getSessionRowsForSkill(skillId: String): Flow<List<SkillSessionRow>> =
+        sessionDao.getSessionRowsForSkill(skillId)
 
     fun getSessionCountInRange(start: LocalDate, end: LocalDate): Flow<Int> =
         sessionDao.getSessionCountInRange(start, end)

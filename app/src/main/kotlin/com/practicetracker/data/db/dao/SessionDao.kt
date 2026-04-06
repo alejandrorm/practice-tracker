@@ -80,6 +80,44 @@ interface SessionDao {
     @Query("SELECT COUNT(*) FROM skill_checks WHERE skillId = :skillId")
     fun getTotalCheckCountForSkill(skillId: String): Flow<Int>
 
+    // Drill-down: skill check frequency for a single piece (all time)
+    @Query("""
+        SELECT sc.skillId, s.label AS skillLabel, COUNT(*) AS checkCount
+        FROM skill_checks sc
+        INNER JOIN session_entries se ON sc.sessionEntryId = se.id
+        INNER JOIN skills s ON sc.skillId = s.id
+        WHERE se.pieceId = :pieceId
+        GROUP BY sc.skillId
+        ORDER BY checkCount DESC
+    """)
+    fun getSkillFrequencyForPiece(pieceId: String): Flow<List<SkillCheckFreqRow>>
+
+    // Drill-down: session rows for a single piece (most recent first)
+    @Query("""
+        SELECT ps.id AS sessionId, ps.date, se.startTime, se.endTime, se.skipped
+        FROM session_entries se
+        INNER JOIN practice_sessions ps ON se.sessionId = ps.id
+        WHERE se.pieceId = :pieceId
+          AND ps.endTime IS NOT NULL
+        ORDER BY ps.startTime DESC
+    """)
+    fun getSessionRowsForPiece(pieceId: String): Flow<List<PieceSessionRow>>
+
+    // Drill-down: sessions where a given skill was checked (most recent first)
+    @Query("""
+        SELECT ps.id AS sessionId, ps.date,
+            COALESCE(p.title, '[Deleted]') AS pieceName,
+            se.startTime, se.endTime
+        FROM skill_checks sc
+        INNER JOIN session_entries se ON sc.sessionEntryId = se.id
+        INNER JOIN practice_sessions ps ON se.sessionId = ps.id
+        LEFT JOIN pieces p ON se.pieceId = p.id
+        WHERE sc.skillId = :skillId
+          AND ps.endTime IS NOT NULL
+        ORDER BY ps.startTime DESC
+    """)
+    fun getSessionRowsForSkill(skillId: String): Flow<List<SkillSessionRow>>
+
     // Per-piece stats for the stats dashboard
     @Query("""
         SELECT p.id AS pieceId, p.title AS pieceName,

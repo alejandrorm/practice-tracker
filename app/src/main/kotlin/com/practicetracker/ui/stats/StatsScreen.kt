@@ -1,5 +1,6 @@
 package com.practicetracker.ui.stats
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -17,6 +18,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowForward
 import androidx.compose.material.icons.filled.EmojiEvents
 import androidx.compose.material.icons.filled.LocalFireDepartment
 import androidx.compose.material.icons.filled.MusicNote
@@ -31,6 +33,7 @@ import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -49,7 +52,11 @@ import java.util.Locale
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun StatsScreen(viewModel: StatsViewModel = hiltViewModel()) {
+fun StatsScreen(
+    onNavigateToPieceDrillDown: (pieceId: String) -> Unit = {},
+    onNavigateToHistory: () -> Unit = {},
+    viewModel: StatsViewModel = hiltViewModel()
+) {
     val window by viewModel.window.collectAsStateWithLifecycle()
     val totalMinutes by viewModel.totalMinutes.collectAsStateWithLifecycle()
     val sessionCount by viewModel.sessionCount.collectAsStateWithLifecycle()
@@ -146,10 +153,16 @@ fun StatsScreen(viewModel: StatsViewModel = hiltViewModel()) {
                 ActivityGrid(practicedDates = practicedDates)
             }
 
-            // Per-piece breakdown
+            // History link
             item {
-                Spacer(Modifier.height(4.dp))
-                SectionHeader("By piece")
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    SectionHeader("By piece")
+                    TextButton(onClick = onNavigateToHistory) { Text("View history") }
+                }
             }
 
             if (pieceStats.isEmpty()) {
@@ -164,7 +177,11 @@ fun StatsScreen(viewModel: StatsViewModel = hiltViewModel()) {
             } else {
                 val maxMinutes = pieceStats.maxOf { it.totalMinutes }.coerceAtLeast(1)
                 items(pieceStats, key = { it.pieceId }) { stat ->
-                    PieceStatRow(stat = stat, maxMinutes = maxMinutes)
+                    PieceStatRow(
+                        stat = stat,
+                        maxMinutes = maxMinutes,
+                        onClick = { onNavigateToPieceDrillDown(stat.pieceId) }
+                    )
                     HorizontalDivider()
                 }
             }
@@ -306,10 +323,11 @@ private fun ActivityGrid(practicedDates: Set<LocalDate>) {
 }
 
 @Composable
-private fun PieceStatRow(stat: PieceStatRow, maxMinutes: Int) {
+private fun PieceStatRow(stat: PieceStatRow, maxMinutes: Int, onClick: () -> Unit) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
+            .clickable(onClick = onClick)
             .padding(vertical = 12.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
@@ -339,6 +357,13 @@ private fun PieceStatRow(stat: PieceStatRow, maxMinutes: Int) {
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
         }
+        Spacer(Modifier.width(4.dp))
+        Icon(
+            imageVector = Icons.AutoMirrored.Filled.ArrowForward,
+            contentDescription = "View piece details",
+            tint = MaterialTheme.colorScheme.onSurfaceVariant,
+            modifier = Modifier.size(16.dp)
+        )
     }
 }
 

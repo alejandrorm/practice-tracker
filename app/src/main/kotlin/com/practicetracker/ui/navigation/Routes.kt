@@ -21,8 +21,17 @@ object Routes {
     const val ACTIVE_SESSION  = "practice/active/{sessionId}"
     const val SESSION_SUMMARY = "practice/summary/{sessionId}"
 
+    // Stats sub-destinations
+    const val HISTORY_LIST      = "stats/history"
+    const val HISTORY_SESSION   = "stats/history/session/{sessionId}"
+    const val PIECE_DRILL_DOWN  = "stats/piece/{pieceId}"
+    const val SKILL_DRILL_DOWN  = "stats/skill/{skillId}"
+
     fun pieceEditor(pieceId: String = "new") = "piece_editor/$pieceId"
     fun planEditor(planId: String = "new") = "plan_editor/$planId"
     fun activeSession(sessionId: String)  = "practice/active/$sessionId"
     fun sessionSummary(sessionId: String) = "practice/summary/$sessionId"
+    fun historySession(sessionId: String) = "stats/history/session/$sessionId"
+    fun pieceDrillDown(pieceId: String)   = "stats/piece/$pieceId"
+    fun skillDrillDown(skillId: String)   = "stats/skill/$skillId"
 }

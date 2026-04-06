@@ -65,6 +65,8 @@ class PieceRepository @Inject constructor(
     fun searchSkillsInLibrary(query: String): Flow<List<Skill>> =
         skillDao.searchSkills(query).map { list -> list.map { it.toDomain() } }
 
+    suspend fun getSkillById(id: String): Skill? = skillDao.getSkillById(id)?.toDomain()
+
     /** Returns an existing Skill matching the label (case-insensitive), or creates a new one. */
     suspend fun getOrCreateSkill(label: String, scope: SkillScope): Skill {
         val existing = skillDao.findByLabelIgnoreCase(label)

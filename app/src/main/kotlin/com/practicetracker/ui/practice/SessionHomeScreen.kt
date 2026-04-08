@@ -281,7 +281,19 @@ private fun PlanSummaryContent(
         )
     }
     Spacer(Modifier.height(12.dp))
-    Button(onClick = onStart, modifier = Modifier.fillMaxWidth()) {
+    if (plan.entries.isEmpty()) {
+        Text(
+            text = "This plan has no pieces. Add pieces in Organize before starting.",
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.error
+        )
+        Spacer(Modifier.height(8.dp))
+    }
+    Button(
+        onClick = onStart,
+        modifier = Modifier.fillMaxWidth(),
+        enabled = plan.entries.isNotEmpty()
+    ) {
         Text("Start Session")
     }
 }

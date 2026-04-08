@@ -7,6 +7,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Edit
+import androidx.compose.material.icons.filled.Tune
+import com.practicetracker.ui.common.EmptyState
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -56,16 +58,11 @@ fun SkillLibraryScreen(
             )
 
             if (filteredSkills.isEmpty()) {
-                Box(
-                    modifier = Modifier.fillMaxSize(),
-                    contentAlignment = Alignment.Center
-                ) {
-                    Text(
-                        text = "No skills yet",
-                        style = MaterialTheme.typography.titleMedium,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
-                    )
-                }
+                EmptyState(
+                    icon = Icons.Filled.Tune,
+                    title = if (searchQuery.isNotBlank()) "No skills match \"$searchQuery\"" else "No skills yet",
+                    subtitle = if (searchQuery.isBlank()) "Skills are created when you add them to pieces." else null
+                )
             } else {
                 LazyColumn(
                     modifier = Modifier.fillMaxSize(),

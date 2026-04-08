@@ -10,6 +10,8 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Edit
+import androidx.compose.material.icons.filled.MusicNote
+import com.practicetracker.ui.common.EmptyState
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -89,22 +91,16 @@ fun PieceListScreen(
             }
 
             if (pieces.isEmpty()) {
-                Box(
-                    modifier = Modifier.fillMaxSize(),
-                    contentAlignment = Alignment.Center
-                ) {
-                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                        Text(
-                            text = "No pieces yet",
-                            style = MaterialTheme.typography.titleMedium,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant
-                        )
-                        Spacer(modifier = Modifier.height(16.dp))
-                        Button(onClick = { onNavigateToPieceEditor("new") }) {
-                            Text("Create your first piece")
-                        }
-                    }
-                }
+                EmptyState(
+                    icon = Icons.Filled.MusicNote,
+                    title = "No pieces yet",
+                    subtitle = if (searchQuery.isNotBlank() || typeFilter != null)
+                        "No pieces match your current filter."
+                    else
+                        "Add pieces to start building your practice library.",
+                    actionLabel = if (searchQuery.isBlank() && typeFilter == null) "Add your first piece" else null,
+                    onAction = if (searchQuery.isBlank() && typeFilter == null) ({ onNavigateToPieceEditor("new") }) else null
+                )
             } else {
                 LazyColumn(
                     modifier = Modifier.fillMaxSize(),

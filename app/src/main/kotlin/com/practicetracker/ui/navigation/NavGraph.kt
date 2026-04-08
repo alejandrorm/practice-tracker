@@ -1,5 +1,10 @@
 package com.practicetracker.ui.navigation
 
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
@@ -30,7 +35,19 @@ fun AppNavGraph(
 ) {
     NavHost(
         navController = navController,
-        startDestination = startDestination
+        startDestination = startDestination,
+        enterTransition = {
+            slideInHorizontally(tween(280)) { it / 4 } + fadeIn(tween(280))
+        },
+        exitTransition = {
+            slideOutHorizontally(tween(280)) { -it / 4 } + fadeOut(tween(200))
+        },
+        popEnterTransition = {
+            slideInHorizontally(tween(280)) { -it / 4 } + fadeIn(tween(280))
+        },
+        popExitTransition = {
+            slideOutHorizontally(tween(280)) { it / 4 } + fadeOut(tween(200))
+        }
     ) {
         composable(Routes.PRACTICE) {
             PracticeScreen(

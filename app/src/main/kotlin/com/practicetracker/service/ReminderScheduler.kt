@@ -4,6 +4,7 @@ import android.app.AlarmManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import com.practicetracker.data.datastore.AppSettings
 import java.time.ZonedDateTime
 
@@ -26,11 +27,16 @@ object ReminderScheduler {
     private fun schedule(context: Context, settings: AppSettings) {
         val triggerAt = nextTriggerMillis(settings) ?: return
         val alarmManager = context.getSystemService(AlarmManager::class.java)
-        alarmManager.setExactAndAllowWhileIdle(
-            AlarmManager.RTC_WAKEUP,
-            triggerAt,
-            buildPendingIntent(context)
-        )
+        val pendingIntent = buildPendingIntent(context)
+        // SCHEDULE_EXACT_ALARM requires explicit user grant on API 31+.
+        // Fall back to inexact alarm if permission is not yet granted.
+        val canExact = Build.VERSION.SDK_INT < Build.VERSION_CODES.S ||
+                alarmManager.canScheduleExactAlarms()
+        if (canExact) {
+            alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, triggerAt, pendingIntent)
+        } else {
+            alarmManager.setAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, triggerAt, pendingIntent)
+        }
     }
 
     fun cancel(context: Context) {

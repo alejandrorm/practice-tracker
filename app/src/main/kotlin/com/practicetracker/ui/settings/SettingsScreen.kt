@@ -1,6 +1,8 @@
 package com.practicetracker.ui.settings
 
+import android.Manifest
 import android.net.Uri
+import android.os.Build
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.background
@@ -21,6 +23,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
+import androidx.core.content.ContextCompat
+import android.content.pm.PackageManager
 import androidx.compose.ui.unit.dp
 import androidx.core.content.FileProvider
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -64,6 +68,14 @@ fun SettingsScreen(
     }
     val galleryLauncher = rememberLauncherForActivityResult(ActivityResultContracts.GetContent()) { uri ->
         uri?.let { avatarUriField = it.toString() }
+    }
+
+    val notificationPermissionLauncher = rememberLauncherForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { granted ->
+        if (granted) {
+            viewModel.updateSettings(settings.copy(remindersEnabled = true))
+        }
     }
 
     fun launchCamera() {
@@ -194,7 +206,22 @@ fun SettingsScreen(
                 Text("Practice reminders")
                 Switch(
                     checked = settings.remindersEnabled,
-                    onCheckedChange = { viewModel.updateSettings(settings.copy(remindersEnabled = it)) }
+                    onCheckedChange = { enabled ->
+                        if (!enabled) {
+                            viewModel.updateSettings(settings.copy(remindersEnabled = false))
+                        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                            val permission = Manifest.permission.POST_NOTIFICATIONS
+                            val granted = ContextCompat.checkSelfPermission(context, permission) ==
+                                    PackageManager.PERMISSION_GRANTED
+                            if (granted) {
+                                viewModel.updateSettings(settings.copy(remindersEnabled = true))
+                            } else {
+                                notificationPermissionLauncher.launch(permission)
+                            }
+                        } else {
+                            viewModel.updateSettings(settings.copy(remindersEnabled = true))
+                        }
+                    }
                 )
             }
 

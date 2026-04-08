@@ -1,12 +1,15 @@
 package com.practicetracker.ui.settings
 
+import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.practicetracker.data.datastore.AppSettings
 import com.practicetracker.data.datastore.SettingsStore
 import com.practicetracker.data.datastore.UserProfile
 import com.practicetracker.data.datastore.UserProfileStore
+import com.practicetracker.service.ReminderScheduler
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.SharedFlow
@@ -19,7 +22,8 @@ import javax.inject.Inject
 @HiltViewModel
 class SettingsViewModel @Inject constructor(
     private val userProfileStore: UserProfileStore,
-    private val settingsStore: SettingsStore
+    private val settingsStore: SettingsStore,
+    @ApplicationContext private val context: Context
 ) : ViewModel() {
 
     val profile: StateFlow<UserProfile> = userProfileStore.profile
@@ -55,6 +59,8 @@ class SettingsViewModel @Inject constructor(
     fun updateSettings(updatedSettings: AppSettings) {
         viewModelScope.launch {
             settingsStore.updateSettings(updatedSettings)
+            // Reschedule (or cancel) the reminder alarm whenever settings change
+            ReminderScheduler.applySettings(context, updatedSettings)
         }
     }
 

@@ -54,6 +54,32 @@ interface SessionDao {
     @Query("SELECT date FROM practice_sessions WHERE endTime IS NOT NULL ORDER BY date DESC")
     suspend fun getAllSessionDates(): List<LocalDate>
 
+    // All-time aggregate stats for milestone evaluation
+    @Query("SELECT COUNT(*) FROM practice_sessions WHERE endTime IS NOT NULL")
+    suspend fun getTotalCompletedSessionCount(): Int
+
+    @Query("""
+        SELECT COALESCE(SUM(
+            (strftime('%s', datetime(endTime/1000, 'unixepoch'))
+           - strftime('%s', datetime(startTime/1000, 'unixepoch'))) / 60
+        ), 0) FROM practice_sessions WHERE endTime IS NOT NULL
+    """)
+    suspend fun getTotalMinutesAllTime(): Int
+
+    @Query("""
+        SELECT COALESCE(MAX(pieceTotal), 0) FROM (
+            SELECT COALESCE(SUM(
+                CASE WHEN se.startTime IS NOT NULL AND se.endTime IS NOT NULL
+                THEN (se.endTime - se.startTime) / 60000 ELSE 0 END
+            ), 0) AS pieceTotal
+            FROM session_entries se
+            INNER JOIN practice_sessions ps ON se.sessionId = ps.id
+            WHERE ps.endTime IS NOT NULL AND se.skipped = 0
+            GROUP BY se.pieceId
+        )
+    """)
+    suspend fun getMaxMinutesOnSinglePiece(): Int
+
     // Session entries
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertSessionEntry(entry: SessionEntryEntity)

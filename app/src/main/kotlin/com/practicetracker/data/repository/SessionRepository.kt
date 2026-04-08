@@ -106,6 +106,15 @@ class SessionRepository @Inject constructor(private val sessionDao: SessionDao) 
     fun getSessionRowsForSkill(skillId: String): Flow<List<SkillSessionRow>> =
         sessionDao.getSessionRowsForSkill(skillId)
 
+    suspend fun getTotalCompletedSessionCount(): Int =
+        sessionDao.getTotalCompletedSessionCount()
+
+    suspend fun getTotalMinutesAllTime(): Int =
+        sessionDao.getTotalMinutesAllTime()
+
+    suspend fun getMaxMinutesOnSinglePiece(): Int =
+        sessionDao.getMaxMinutesOnSinglePiece()
+
     fun getSessionCountInRange(start: LocalDate, end: LocalDate): Flow<Int> =
         sessionDao.getSessionCountInRange(start, end)
 

@@ -16,6 +16,7 @@ import com.practicetracker.ui.practice.ActiveSessionScreen
 import com.practicetracker.ui.practice.PracticeScreen
 import com.practicetracker.ui.practice.SessionSummaryScreen
 import com.practicetracker.ui.settings.SettingsScreen
+import com.practicetracker.ui.achievements.AchievementsScreen
 import com.practicetracker.ui.stats.HistoryListScreen
 import com.practicetracker.ui.stats.PieceDrillDownScreen
 import com.practicetracker.ui.stats.SkillDrillDownScreen
@@ -69,15 +70,22 @@ fun AppNavGraph(
                     navController.navigate(Routes.PRACTICE) {
                         popUpTo(Routes.PRACTICE) { inclusive = true }
                     }
+                },
+                onNavigateToAchievements = {
+                    navController.navigate(Routes.ACHIEVEMENTS)
                 }
             )
+        }
+        composable(Routes.ACHIEVEMENTS) {
+            AchievementsScreen(onNavigateBack = { navController.popBackStack() })
         }
         composable(Routes.STATS) {
             StatsScreen(
                 onNavigateToPieceDrillDown = { pieceId ->
                     navController.navigate(Routes.pieceDrillDown(pieceId))
                 },
-                onNavigateToHistory = { navController.navigate(Routes.HISTORY_LIST) }
+                onNavigateToHistory = { navController.navigate(Routes.HISTORY_LIST) },
+                onNavigateToAchievements = { navController.navigate(Routes.ACHIEVEMENTS) }
             )
         }
         composable(Routes.HISTORY_LIST) {

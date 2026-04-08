@@ -21,6 +21,9 @@ object Routes {
     const val ACTIVE_SESSION  = "practice/active/{sessionId}"
     const val SESSION_SUMMARY = "practice/summary/{sessionId}"
 
+    // Achievements
+    const val ACHIEVEMENTS = "achievements"
+
     // Stats sub-destinations
     const val HISTORY_LIST      = "stats/history"
     const val HISTORY_SESSION   = "stats/history/session/{sessionId}"

@@ -55,6 +55,7 @@ import java.util.Locale
 fun StatsScreen(
     onNavigateToPieceDrillDown: (pieceId: String) -> Unit = {},
     onNavigateToHistory: () -> Unit = {},
+    onNavigateToAchievements: () -> Unit = {},
     viewModel: StatsViewModel = hiltViewModel()
 ) {
     val window by viewModel.window.collectAsStateWithLifecycle()
@@ -141,6 +142,37 @@ fun StatsScreen(
                             label = "Best streak",
                             value = pluralDays(longestStreak),
                             tint = MaterialTheme.colorScheme.primary
+                        )
+                    }
+                }
+            }
+
+            // Achievements link
+            item {
+                Card(
+                    modifier = Modifier.fillMaxWidth(),
+                    onClick = onNavigateToAchievements
+                ) {
+                    Row(
+                        modifier = Modifier.padding(16.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.SpaceBetween
+                    ) {
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Icon(
+                                imageVector = Icons.Filled.EmojiEvents,
+                                contentDescription = null,
+                                tint = MaterialTheme.colorScheme.primary,
+                                modifier = Modifier.size(24.dp)
+                            )
+                            Spacer(Modifier.width(12.dp))
+                            Text("Achievements", style = MaterialTheme.typography.titleSmall)
+                        }
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowForward,
+                            contentDescription = "View achievements",
+                            tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                            modifier = Modifier.size(20.dp)
                         )
                     }
                 }

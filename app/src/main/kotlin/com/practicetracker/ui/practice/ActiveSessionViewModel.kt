@@ -28,6 +28,7 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import java.time.Instant
+import java.time.temporal.ChronoUnit
 import javax.inject.Inject
 
 data class ActiveSessionUiState(
@@ -35,7 +36,7 @@ data class ActiveSessionUiState(
     val isLoading: Boolean = true,
     val isPaused: Boolean = false,
     val sessionElapsedSeconds: Long = 0L,
-    val currentPieceIndex: Int = 0,
+    val selectedPieceIndex: Int? = null,
     val entries: List<SessionEntryUiState> = emptyList(),
     val planName: String? = null
 )
@@ -79,8 +80,11 @@ class ActiveSessionViewModel @Inject constructor(
     private var sessionPausedAccumulatedMs: Long = 0L
     private var sessionPauseStartMs: Long = 0L
 
-    private var pieceStartWallClock: Long = 0L
-    private var piecePausedAccumulatedMs: Long = 0L
+    // Per-piece timing for the currently open piece
+    private var activePieceOpenedAtMs: Long = 0L
+    private var activePiecePausedMs: Long = 0L
+    // Accumulated elapsed ms per entry from previous opens
+    private val pieceAccumMs = mutableMapOf<String, Long>()
 
     private var tickerJob: Job? = null
 
@@ -108,7 +112,13 @@ class ActiveSessionViewModel @Inject constructor(
             fullSession.entries.forEach { entry ->
                 entryIds += entry.id
                 entryMap[entry.id] = entry
-                checkedSkillsMap[entry.id] = mutableSetOf()
+                checkedSkillsMap[entry.id] = entry.skillChecks.map { it.skillId }.toMutableSet()
+                // Pre-populate elapsed for already-finished pieces
+                if (entry.startTime != null && entry.endTime != null) {
+                    pieceAccumMs[entry.id] = ChronoUnit.MILLIS
+                        .between(entry.startTime, entry.endTime)
+                        .coerceAtLeast(0L)
+                }
                 entry.pieceId?.let { pid ->
                     pieceRepository.getPieceWithSkills(pid).firstOrNull()?.let { piece ->
                         pieceMap[pid] = piece
@@ -122,25 +132,44 @@ class ActiveSessionViewModel @Inject constructor(
 
         rebuildUiState(planName)
         startTicker()
-
-        if (entryIds.isNotEmpty()) {
-            startCurrentPiece()
-        }
     }
 
-    private fun startCurrentPiece() {
-        val index = _uiState.value.currentPieceIndex
+    fun selectPiece(index: Int) {
         if (index >= entryIds.size) return
+        // Flush any currently open piece
+        flushActivePieceTime()
+
         val entryId = entryIds[index]
+        activePieceOpenedAtMs = System.currentTimeMillis()
+        activePiecePausedMs = 0L
+
+        // Mark startTime in DB if this is the first time opening
         val entry = entryMap[entryId] ?: return
         if (entry.startTime == null) {
             val started = entry.copy(startTime = Instant.now())
             entryMap[entryId] = started
             viewModelScope.launch { sessionRepository.saveSessionEntry(started) }
-            pieceStartWallClock = System.currentTimeMillis()
-            piecePausedAccumulatedMs = 0L
         }
+
+        _uiState.update { it.copy(selectedPieceIndex = index) }
         rebuildUiState()
+    }
+
+    fun returnToOverview() {
+        flushActivePieceTime()
+        _uiState.update { it.copy(selectedPieceIndex = null) }
+        rebuildUiState()
+    }
+
+    private fun flushActivePieceTime() {
+        val index = _uiState.value.selectedPieceIndex ?: return
+        val entryId = entryIds.getOrNull(index) ?: return
+        if (activePieceOpenedAtMs == 0L) return
+        val now = System.currentTimeMillis()
+        val elapsed = ((now - activePieceOpenedAtMs) - activePiecePausedMs).coerceAtLeast(0L)
+        pieceAccumMs[entryId] = (pieceAccumMs[entryId] ?: 0L) + elapsed
+        activePieceOpenedAtMs = 0L
+        activePiecePausedMs = 0L
     }
 
     private fun startTicker() {
@@ -150,26 +179,16 @@ class ActiveSessionViewModel @Inject constructor(
                 delay(1_000)
                 if (!_uiState.value.isPaused) {
                     val now = System.currentTimeMillis()
-                    val sessionElapsed = (now - sessionStartWallClock - sessionPausedAccumulatedMs) / 1000
-                    val pieceElapsed = (now - pieceStartWallClock - piecePausedAccumulatedMs) / 1000
-
-                    _uiState.update { state ->
-                        val updatedEntries = state.entries.mapIndexed { i, entry ->
-                            if (i == state.currentPieceIndex && entry.isStarted && !entry.isDone && !entry.isSkipped)
-                                entry.copy(elapsedSeconds = pieceElapsed.coerceAtLeast(0))
-                            else entry
-                        }
-                        state.copy(
-                            sessionElapsedSeconds = sessionElapsed.coerceAtLeast(0),
-                            entries = updatedEntries
-                        )
+                    val sessionElapsed = ((now - sessionStartWallClock - sessionPausedAccumulatedMs) / 1000)
+                        .coerceAtLeast(0)
+                    _uiState.update { it.copy(sessionElapsedSeconds = sessionElapsed) }
+                    if (_uiState.value.selectedPieceIndex != null) {
+                        rebuildUiState()
                     }
-
-                    // Update notification
                     val nm = context.getSystemService(NotificationManager::class.java)
                     nm.notify(
                         SessionNotificationHelper.NOTIFICATION_ID,
-                        SessionNotificationHelper.buildNotification(context, sessionElapsed.coerceAtLeast(0))
+                        SessionNotificationHelper.buildNotification(context, sessionElapsed)
                     )
                 }
             }
@@ -180,8 +199,11 @@ class ActiveSessionViewModel @Inject constructor(
         val now = System.currentTimeMillis()
         _uiState.update { state ->
             if (state.isPaused) {
-                sessionPausedAccumulatedMs += now - sessionPauseStartMs
-                piecePausedAccumulatedMs += now - sessionPauseStartMs
+                val pausedDuration = now - sessionPauseStartMs
+                sessionPausedAccumulatedMs += pausedDuration
+                if (state.selectedPieceIndex != null) {
+                    activePiecePausedMs += pausedDuration
+                }
                 state.copy(isPaused = false)
             } else {
                 sessionPauseStartMs = now
@@ -191,7 +213,7 @@ class ActiveSessionViewModel @Inject constructor(
     }
 
     fun checkSkill(skillId: String) {
-        val index = _uiState.value.currentPieceIndex
+        val index = _uiState.value.selectedPieceIndex ?: return
         if (index >= entryIds.size) return
         val entryId = entryIds[index]
         checkedSkillsMap.getOrPut(entryId) { mutableSetOf() }.add(skillId)
@@ -205,7 +227,7 @@ class ActiveSessionViewModel @Inject constructor(
     }
 
     fun uncheckSkill(skillId: String) {
-        val index = _uiState.value.currentPieceIndex
+        val index = _uiState.value.selectedPieceIndex ?: return
         if (index >= entryIds.size) return
         val entryId = entryIds[index]
         checkedSkillsMap[entryId]?.remove(skillId)
@@ -219,51 +241,27 @@ class ActiveSessionViewModel @Inject constructor(
     }
 
     fun donePiece() {
-        val index = _uiState.value.currentPieceIndex
-        if (index >= entryIds.size) return
-        val entryId = entryIds[index]
+        val index = _uiState.value.selectedPieceIndex ?: return
+        val entryId = entryIds.getOrNull(index) ?: return
         val entry = entryMap[entryId] ?: return
+        flushActivePieceTime()
         val completed = entry.copy(endTime = Instant.now())
         entryMap[entryId] = completed
         viewModelScope.launch { sessionRepository.updateSessionEntry(completed) }
-
-        if (index + 1 < entryIds.size) {
-            _uiState.update { it.copy(currentPieceIndex = index + 1) }
-            pieceStartWallClock = System.currentTimeMillis()
-            piecePausedAccumulatedMs = 0L
-            startCurrentPiece()
-        } else {
-            endSession()
-        }
+        _uiState.update { it.copy(selectedPieceIndex = null) }
+        rebuildUiState()
     }
 
     fun skipPiece() {
-        val index = _uiState.value.currentPieceIndex
-        if (index >= entryIds.size) return
-        val entryId = entryIds[index]
+        val index = _uiState.value.selectedPieceIndex ?: return
+        val entryId = entryIds.getOrNull(index) ?: return
         val entry = entryMap[entryId] ?: return
+        flushActivePieceTime()
         val skipped = entry.copy(skipped = true, endTime = Instant.now())
         entryMap[entryId] = skipped
         viewModelScope.launch { sessionRepository.updateSessionEntry(skipped) }
-
-        if (index + 1 < entryIds.size) {
-            _uiState.update { it.copy(currentPieceIndex = index + 1) }
-            pieceStartWallClock = System.currentTimeMillis()
-            piecePausedAccumulatedMs = 0L
-            startCurrentPiece()
-        } else {
-            endSession()
-        }
-    }
-
-    fun jumpToPiece(targetIndex: Int) {
-        donePiece()
-        if (targetIndex < entryIds.size) {
-            _uiState.update { it.copy(currentPieceIndex = targetIndex) }
-            pieceStartWallClock = System.currentTimeMillis()
-            piecePausedAccumulatedMs = 0L
-            startCurrentPiece()
-        }
+        _uiState.update { it.copy(selectedPieceIndex = null) }
+        rebuildUiState()
     }
 
     fun endSession() {
@@ -281,12 +279,21 @@ class ActiveSessionViewModel @Inject constructor(
     }
 
     private fun rebuildUiState(planName: String? = _uiState.value.planName) {
-        val currentIndex = _uiState.value.currentPieceIndex
+        val selectedIndex = _uiState.value.selectedPieceIndex
+        val now = System.currentTimeMillis()
+
         val entryUiStates = entryIds.mapIndexed { index, entryId ->
             val entry = entryMap[entryId]
             val piece = entry?.pieceId?.let { pieceMap[it] }
             val checked = checkedSkillsMap[entryId] ?: emptySet<String>()
-            val isCurrentPiece = index == currentIndex
+            val isSelected = index == selectedIndex
+
+            val elapsedSeconds = if (isSelected && activePieceOpenedAtMs > 0L) {
+                val sinceOpen = ((now - activePieceOpenedAtMs) - activePiecePausedMs).coerceAtLeast(0L)
+                ((pieceAccumMs[entryId] ?: 0L) + sinceOpen) / 1000
+            } else {
+                (pieceAccumMs[entryId] ?: 0L) / 1000
+            }
 
             SessionEntryUiState(
                 entryId = entryId,
@@ -300,7 +307,7 @@ class ActiveSessionViewModel @Inject constructor(
                 notes = piece?.notes,
                 skills = piece?.skills ?: emptyList(),
                 checkedSkillIds = checked,
-                elapsedSeconds = if (isCurrentPiece) _uiState.value.entries.getOrNull(index)?.elapsedSeconds ?: 0L else 0L,
+                elapsedSeconds = elapsedSeconds,
                 isStarted = entry?.startTime != null,
                 isDone = entry?.endTime != null && entry.skipped.not(),
                 isSkipped = entry?.skipped == true

@@ -3,10 +3,13 @@ package com.practicetracker.ui.organize.plan
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.practicetracker.data.datastore.UserProfileStore
 import com.practicetracker.data.repository.PieceRepository
 import com.practicetracker.data.repository.PlanRepository
+import com.practicetracker.data.repository.RepertoireRepository
 import com.practicetracker.domain.engine.SuggestionEngine
 import com.practicetracker.domain.model.Piece
+import com.practicetracker.domain.model.PieceType
 import com.practicetracker.domain.model.PlanEntry
 import com.practicetracker.domain.model.PracticePlan
 import com.practicetracker.domain.model.Schedule
@@ -19,12 +22,13 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
+import java.time.DayOfWeek
 import java.time.Instant
 import java.time.LocalDate
-import java.time.DayOfWeek
 import java.util.UUID
 import javax.inject.Inject
 import kotlinx.coroutines.flow.firstOrNull as flowFirstOrNull
@@ -38,6 +42,8 @@ data class PlanEntryUiModel(
 class PlanEditorViewModel @Inject constructor(
     private val planRepository: PlanRepository,
     private val pieceRepository: PieceRepository,
+    private val repertoireRepository: RepertoireRepository,
+    private val userProfileStore: UserProfileStore,
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
@@ -60,6 +66,23 @@ class PlanEditorViewModel @Inject constructor(
     val scaleSuggestions: StateFlow<List<String>> = planEntries.map { entries ->
         val titles = entries.mapNotNull { it.piece?.title }
         SuggestionEngine.suggestScales("violin", titles)
+    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
+
+    /**
+     * Practice items suggested by the repertoire for the pieces currently in the plan.
+     * Items already in the plan (by title) are excluded.
+     */
+    val practiceSuggestions: StateFlow<List<String>> = planEntries.map { entries ->
+        val inPlanTitles = entries.mapNotNull { it.piece?.title }
+            .map { it.lowercase() }.toSet()
+
+        entries.flatMap { model ->
+            model.piece?.title
+                ?.let { repertoireRepository.findByTitle(it)?.suggestedPractice }
+                ?: emptyList()
+        }
+            .distinct()
+            .filter { it.lowercase() !in inPlanTitles }
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
 
     init {
@@ -99,6 +122,34 @@ class PlanEditorViewModel @Inject constructor(
             overrideMinutes = null
         )
         planEntries.value = planEntries.value + PlanEntryUiModel(entry, piece)
+    }
+
+    /**
+     * Finds or creates a piece for [title] and adds it to the plan.
+     * Infers piece type from the title and looks up level metadata from the repertoire.
+     */
+    fun addSuggestedPractice(title: String) {
+        viewModelScope.launch {
+            val repEntry = repertoireRepository.findByTitle(title)
+            val type = inferPieceType(title)
+            val piece = pieceRepository.getOrCreatePiece(
+                title = title,
+                type = type,
+                level = repEntry?.level,
+                levelAlias = repEntry?.levelAlias
+            )
+            addPiece(piece)
+        }
+    }
+
+    private fun inferPieceType(title: String): PieceType {
+        val lower = title.lowercase()
+        return when {
+            lower.contains("scale") || lower.contains("arpeggio") -> PieceType.SCALE
+            lower.contains("etude") || lower.contains("étude") ||
+                lower.contains("op.") || lower.contains("no.") -> PieceType.ETUDE
+            else -> PieceType.EXERCISE
+        }
     }
 
     fun removeEntry(index: Int) {

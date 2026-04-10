@@ -200,6 +200,7 @@ private fun PageNameInstrument(
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun PageOptionalDetails(
     avatarUri: String,
@@ -251,15 +252,36 @@ private fun PageOptionalDetails(
 
     Spacer(Modifier.height(16.dp))
 
-    Text("Skill level", style = MaterialTheme.typography.labelLarge)
-    Spacer(Modifier.height(6.dp))
-    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-        listOf("Beginner", "Intermediate", "Advanced", "Professional").forEach { level ->
-            FilterChip(
-                selected = skillLevel == level,
-                onClick = { onSkillLevelChange(level) },
-                label = { Text(level) }
-            )
+    val skillLevels = listOf("Beginner", "Intermediate", "Advanced", "Professional")
+    var skillDropdownExpanded by remember { mutableStateOf(false) }
+    ExposedDropdownMenuBox(
+        expanded = skillDropdownExpanded,
+        onExpandedChange = { skillDropdownExpanded = it },
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        OutlinedTextField(
+            value = skillLevel.ifBlank { "Skill level" },
+            onValueChange = {},
+            readOnly = true,
+            label = { Text("Skill level") },
+            trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = skillDropdownExpanded) },
+            modifier = Modifier
+                .fillMaxWidth()
+                .menuAnchor(MenuAnchorType.PrimaryNotEditable)
+        )
+        ExposedDropdownMenu(
+            expanded = skillDropdownExpanded,
+            onDismissRequest = { skillDropdownExpanded = false }
+        ) {
+            skillLevels.forEach { level ->
+                DropdownMenuItem(
+                    text = { Text(level) },
+                    onClick = {
+                        onSkillLevelChange(level)
+                        skillDropdownExpanded = false
+                    }
+                )
+            }
         }
     }
 

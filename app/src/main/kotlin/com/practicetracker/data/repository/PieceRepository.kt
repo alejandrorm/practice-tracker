@@ -6,6 +6,7 @@ import com.practicetracker.data.db.entity.PieceSkillEntity
 import com.practicetracker.data.mapper.toDomain
 import com.practicetracker.data.mapper.toEntity
 import com.practicetracker.domain.model.Piece
+import com.practicetracker.domain.model.PieceType
 import com.practicetracker.domain.model.Skill
 import com.practicetracker.domain.model.SkillScope
 import kotlinx.coroutines.flow.Flow
@@ -68,6 +69,40 @@ class PieceRepository @Inject constructor(
     suspend fun getSkillById(id: String): Skill? = skillDao.getSkillById(id)?.toDomain()
 
     /** Returns an existing Skill matching the label (case-insensitive), or creates a new one. */
+    /**
+     * Finds an existing piece by exact title (case-insensitive), or creates and saves a new one
+     * with the given type and optional level metadata.
+     */
+    suspend fun getOrCreatePiece(
+        title: String,
+        type: PieceType,
+        level: Int? = null,
+        levelAlias: String? = null
+    ): Piece {
+        val existing = pieceDao.findByTitleIgnoreCase(title)
+        if (existing != null) {
+            val skills = pieceDao.getPieceSkillsForPiece(existing.id)
+                .mapNotNull { ps -> skillDao.getSkillById(ps.skillId)?.toDomain() }
+            return existing.toDomain(skills)
+        }
+        val newPiece = Piece(
+            id = java.util.UUID.randomUUID().toString(),
+            title = title,
+            type = type,
+            composer = null,
+            book = null,
+            pages = null,
+            notes = null,
+            suggestedMinutes = 5,
+            skills = emptyList(),
+            createdAt = java.time.Instant.now(),
+            level = level,
+            levelAlias = levelAlias
+        )
+        savePiece(newPiece)
+        return newPiece
+    }
+
     suspend fun getOrCreateSkill(label: String, scope: SkillScope): Skill {
         val existing = skillDao.findByLabelIgnoreCase(label)
         if (existing != null) return existing.toDomain()

@@ -51,4 +51,7 @@ interface PieceDao {
 
     @Query("SELECT * FROM piece_skills WHERE pieceId = :pieceId ORDER BY `order` ASC")
     suspend fun getPieceSkillsForPiece(pieceId: String): List<PieceSkillEntity>
+
+    @Query("SELECT * FROM pieces WHERE LOWER(title) = LOWER(:title) LIMIT 1")
+    suspend fun findByTitleIgnoreCase(title: String): PieceEntity?
 }

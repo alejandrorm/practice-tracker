@@ -39,10 +39,14 @@ fun PieceEditorScreen(
     val attachedSkills by viewModel.attachedSkills.collectAsStateWithLifecycle()
     val skillSearchQuery by viewModel.skillSearchQuery.collectAsStateWithLifecycle()
     val skillSearchResults by viewModel.skillSearchResults.collectAsStateWithLifecycle()
+    val practiceSearchResults by viewModel.practiceSearchResults.collectAsStateWithLifecycle()
     val suggestedSkillLabels by viewModel.suggestedSkillLabels.collectAsStateWithLifecycle()
+    val repertoireSuggestions by viewModel.repertoireSuggestions.collectAsStateWithLifecycle()
+    val levelAlias by viewModel.levelAlias.collectAsStateWithLifecycle()
 
     var titleError by remember { mutableStateOf(false) }
     var showSkillDropdown by remember { mutableStateOf(false) }
+    var showTitleDropdown by remember { mutableStateOf(false) }
 
     LaunchedEffect(viewModel.saveComplete) {
         viewModel.saveComplete.collect { onNavigateBack() }
@@ -81,19 +85,54 @@ fun PieceEditorScreen(
         ) {
             Spacer(modifier = Modifier.height(8.dp))
 
-            OutlinedTextField(
-                value = title,
-                onValueChange = {
-                    viewModel.title.value = it
-                    titleError = false
-                },
-                label = { Text("Title *") },
-                isError = titleError,
-                supportingText = if (titleError) {
-                    { Text("Title is required") }
-                } else null,
+            // Title with repertoire autocomplete
+            ExposedDropdownMenuBox(
+                expanded = showTitleDropdown && repertoireSuggestions.isNotEmpty(),
+                onExpandedChange = { showTitleDropdown = it },
                 modifier = Modifier.fillMaxWidth()
-            )
+            ) {
+                OutlinedTextField(
+                    value = title,
+                    onValueChange = {
+                        viewModel.title.value = it
+                        titleError = false
+                        showTitleDropdown = true
+                    },
+                    label = { Text("Title *") },
+                    isError = titleError,
+                    supportingText = when {
+                        titleError -> { { Text("Title is required") } }
+                        levelAlias != null -> { { Text(levelAlias!!) } }
+                        else -> null
+                    },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .menuAnchor(type = MenuAnchorType.PrimaryEditable, enabled = true)
+                )
+                ExposedDropdownMenu(
+                    expanded = showTitleDropdown && repertoireSuggestions.isNotEmpty(),
+                    onDismissRequest = { showTitleDropdown = false }
+                ) {
+                    repertoireSuggestions.forEach { entry ->
+                        DropdownMenuItem(
+                            text = {
+                                Column {
+                                    Text(entry.name, style = MaterialTheme.typography.bodyMedium)
+                                    Text(
+                                        "${entry.composer} · ${entry.levelAlias}",
+                                        style = MaterialTheme.typography.bodySmall,
+                                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                                    )
+                                }
+                            },
+                            onClick = {
+                                viewModel.selectRepertoireEntry(entry)
+                                showTitleDropdown = false
+                            }
+                        )
+                    }
+                }
+            }
 
             // Type selector
             Text(
@@ -177,9 +216,12 @@ fun PieceEditorScreen(
                 color = MaterialTheme.colorScheme.primary
             )
 
-            // Skill search
+            // Skill search (DB skills + violin_practice.json items)
+            val hasDropdownItems = skillSearchResults.isNotEmpty() ||
+                practiceSearchResults.isNotEmpty() ||
+                skillSearchQuery.isNotBlank()
             ExposedDropdownMenuBox(
-                expanded = showSkillDropdown && (skillSearchResults.isNotEmpty() || skillSearchQuery.isNotBlank()),
+                expanded = showSkillDropdown && hasDropdownItems,
                 onExpandedChange = { showSkillDropdown = it }
             ) {
                 OutlinedTextField(
@@ -194,11 +236,11 @@ fun PieceEditorScreen(
                         .menuAnchor(type = MenuAnchorType.PrimaryEditable, enabled = true)
                 )
                 ExposedDropdownMenu(
-                    expanded = showSkillDropdown && (skillSearchResults.isNotEmpty() || skillSearchQuery.isNotBlank()),
+                    expanded = showSkillDropdown && hasDropdownItems,
                     onDismissRequest = { showSkillDropdown = false }
                 ) {
-                    val resultsToShow = skillSearchResults.take(5)
-                    resultsToShow.forEach { skill ->
+                    // Existing DB skills
+                    skillSearchResults.take(4).forEach { skill ->
                         DropdownMenuItem(
                             text = { Text(skill.label) },
                             onClick = {
@@ -207,8 +249,24 @@ fun PieceEditorScreen(
                             }
                         )
                     }
+                    // Practice items from violin_practice.json not already in DB results
+                    val dbLabels = skillSearchResults.map { it.label.lowercase() }.toSet()
+                    practiceSearchResults
+                        .filter { it.lowercase() !in dbLabels }
+                        .take(4)
+                        .forEach { item ->
+                            DropdownMenuItem(
+                                text = { Text(item) },
+                                onClick = {
+                                    viewModel.addSkillByLabel(item)
+                                    showSkillDropdown = false
+                                }
+                            )
+                        }
+                    // Create new option
                     if (skillSearchQuery.isNotBlank() &&
-                        skillSearchResults.none { it.label.equals(skillSearchQuery, ignoreCase = true) }
+                        skillSearchResults.none { it.label.equals(skillSearchQuery, ignoreCase = true) } &&
+                        practiceSearchResults.none { it.equals(skillSearchQuery, ignoreCase = true) }
                     ) {
                         DropdownMenuItem(
                             text = { Text("Create \"${skillSearchQuery}\"") },

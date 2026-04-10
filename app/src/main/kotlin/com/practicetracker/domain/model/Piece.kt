@@ -12,5 +12,7 @@ data class Piece(
     val notes: String?,
     val suggestedMinutes: Int,
     val skills: List<Skill>,
-    val createdAt: Instant
+    val createdAt: Instant,
+    val level: Int? = null,
+    val levelAlias: String? = null
 )

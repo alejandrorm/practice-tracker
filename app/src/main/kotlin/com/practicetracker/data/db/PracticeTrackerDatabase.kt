@@ -25,7 +25,7 @@ import com.practicetracker.data.db.entity.*
         SkillCheckEntity::class,
         AchievementEntity::class
     ],
-    version = 2,
+    version = 3,
     exportSchema = true
 )
 @TypeConverters(Converters::class)
@@ -47,6 +47,13 @@ abstract class PracticeTrackerDatabase : RoomDatabase() {
                     )
                     """.trimIndent()
                 )
+            }
+        }
+
+        val MIGRATION_2_3 = object : Migration(2, 3) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                db.execSQL("ALTER TABLE pieces ADD COLUMN level INTEGER")
+                db.execSQL("ALTER TABLE pieces ADD COLUMN levelAlias TEXT")
             }
         }
     }

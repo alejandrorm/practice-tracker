@@ -8,6 +8,7 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.KeyboardArrowDown
@@ -38,6 +39,7 @@ fun PlanEditorScreen(
     val planEntries by viewModel.planEntries.collectAsStateWithLifecycle()
     val conflictPlan by viewModel.conflictPlan.collectAsStateWithLifecycle()
     val scaleSuggestions by viewModel.scaleSuggestions.collectAsStateWithLifecycle()
+    val practiceSuggestions by viewModel.practiceSuggestions.collectAsStateWithLifecycle()
 
     var nameError by remember { mutableStateOf(false) }
     var showPiecePicker by remember { mutableStateOf(false) }
@@ -189,17 +191,50 @@ fun PlanEditorScreen(
                 }
             }
 
-            if (suggestionsExpanded && scaleSuggestions.isNotEmpty()) {
-                Text(
-                    text = "Scale suggestions based on your pieces:",
-                    style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
-                scaleSuggestions.forEach { scaleName ->
+            if (suggestionsExpanded) {
+                if (practiceSuggestions.isNotEmpty()) {
                     Text(
-                        text = "• $scaleName",
-                        style = MaterialTheme.typography.bodyMedium,
-                        modifier = Modifier.padding(vertical = 2.dp)
+                        text = "Based on pieces in this plan — tap + to add:",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                    practiceSuggestions.forEach { item ->
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Text(
+                                text = item,
+                                style = MaterialTheme.typography.bodyMedium,
+                                modifier = Modifier.weight(1f)
+                            )
+                            IconButton(onClick = { viewModel.addSuggestedPractice(item) }) {
+                                Icon(
+                                    imageVector = Icons.Default.Add,
+                                    contentDescription = "Add to plan",
+                                    tint = MaterialTheme.colorScheme.primary
+                                )
+                            }
+                        }
+                    }
+                } else if (scaleSuggestions.isNotEmpty()) {
+                    Text(
+                        text = "Scale suggestions based on your pieces:",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                    scaleSuggestions.forEach { scaleName ->
+                        Text(
+                            text = "• $scaleName",
+                            style = MaterialTheme.typography.bodyMedium,
+                            modifier = Modifier.padding(vertical = 2.dp)
+                        )
+                    }
+                } else {
+                    Text(
+                        text = "Add repertoire pieces to see practice suggestions here.",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
                 }
             }

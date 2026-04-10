@@ -22,7 +22,7 @@ object DatabaseModule {
     @Provides @Singleton
     fun provideDatabase(@ApplicationContext context: Context): PracticeTrackerDatabase =
         Room.databaseBuilder(context, PracticeTrackerDatabase::class.java, "practice_tracker.db")
-            .addMigrations(PracticeTrackerDatabase.MIGRATION_1_2)
+            .addMigrations(PracticeTrackerDatabase.MIGRATION_1_2, PracticeTrackerDatabase.MIGRATION_2_3)
             .build()
 
     @Provides fun providePieceDao(db: PracticeTrackerDatabase): PieceDao = db.pieceDao()

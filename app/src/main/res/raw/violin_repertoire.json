@@ -1,0 +1,1851 @@
+[
+  {
+    "Name": "Twinkle Twinkle Little Star (Variations)",
+    "Composer": "Suzuki/Traditional",
+    "Level": 1,
+    "Level_alias": "Absolute Beginner",
+    "Style": "Classical/Folk",
+    "Suggested_practice": [
+      "D major scale (1 octave)",
+      "A major scale (1 octave)",
+      "Open string bow exercises",
+      "Wohlfahrt Op. 45 No. 1",
+      "Schradieck School of Violin Technique Book 1, No. 1"
+    ]
+  },
+  {
+    "Name": "Lightly Row",
+    "Composer": "Traditional/Suzuki",
+    "Level": 1,
+    "Level_alias": "Absolute Beginner",
+    "Style": "Folk",
+    "Suggested_practice": [
+      "D major scale (1 octave)",
+      "G major scale (1 octave)",
+      "Wohlfahrt Op. 45 No. 2",
+      "Long bow open string exercises",
+      "Finger placement etudes on D and A strings"
+    ]
+  },
+  {
+    "Name": "Song of the Wind",
+    "Composer": "Traditional/Suzuki",
+    "Level": 1,
+    "Level_alias": "Absolute Beginner",
+    "Style": "Folk",
+    "Suggested_practice": [
+      "D major scale (1 octave)",
+      "A major scale (1 octave)",
+      "Wohlfahrt Op. 45 No. 3",
+      "Detaché bow strokes on open strings"
+    ]
+  },
+  {
+    "Name": "Go Tell Aunt Rhody",
+    "Composer": "Traditional/Suzuki",
+    "Level": 1,
+    "Level_alias": "Absolute Beginner",
+    "Style": "American Folk",
+    "Suggested_practice": [
+      "D major scale (1 octave)",
+      "G major scale (1 octave)",
+      "Wohlfahrt Op. 45 No. 4",
+      "Bow distribution exercises",
+      "Finger independence exercises"
+    ]
+  },
+  {
+    "Name": "O Come Little Children",
+    "Composer": "Traditional/Suzuki",
+    "Level": 1,
+    "Level_alias": "Absolute Beginner",
+    "Style": "Folk/Christmas",
+    "Suggested_practice": [
+      "D major scale (1 octave)",
+      "Wohlfahrt Op. 45 No. 5",
+      "String crossing exercises (open strings)",
+      "Martelé bow strokes"
+    ]
+  },
+  {
+    "Name": "Mary Had a Little Lamb",
+    "Composer": "Traditional",
+    "Level": 1,
+    "Level_alias": "Absolute Beginner",
+    "Style": "Folk",
+    "Suggested_practice": [
+      "D major scale (1 octave)",
+      "A major scale (1 octave)",
+      "Wohlfahrt Op. 45 No. 1",
+      "Open string rhythmic exercises",
+      "Bow hold exercises"
+    ]
+  },
+  {
+    "Name": "Perpetual Motion",
+    "Composer": "Suzuki",
+    "Level": 1,
+    "Level_alias": "Absolute Beginner",
+    "Style": "Classical Exercise",
+    "Suggested_practice": [
+      "D major scale (1 octave, separate bows)",
+      "A major scale (1 octave)",
+      "Wohlfahrt Op. 45 No. 6",
+      "Even note exercises",
+      "Left-hand finger dexterity on D string"
+    ]
+  },
+  {
+    "Name": "Allegro in D major",
+    "Composer": "Suzuki",
+    "Level": 1,
+    "Level_alias": "Absolute Beginner",
+    "Style": "Classical",
+    "Suggested_practice": [
+      "D major scale (1 octave)",
+      "Wohlfahrt Op. 45 No. 7",
+      "String crossing exercises",
+      "Hooked bowing patterns"
+    ]
+  },
+  {
+    "Name": "Etude in D major",
+    "Composer": "Suzuki",
+    "Level": 1,
+    "Level_alias": "Absolute Beginner",
+    "Style": "Classical",
+    "Suggested_practice": [
+      "D major scale (1 octave)",
+      "G major scale (1 octave)",
+      "Wohlfahrt Op. 45 No. 8",
+      "Even tone production exercises"
+    ]
+  },
+  {
+    "Name": "Minuet No. 1 in G major",
+    "Composer": "Pleyel",
+    "Level": 1,
+    "Level_alias": "Absolute Beginner",
+    "Style": "Baroque/Classical",
+    "Suggested_practice": [
+      "G major scale (1 octave)",
+      "D major scale (1 octave)",
+      "Wohlfahrt Op. 45 No. 9",
+      "Minuet bow style exercises",
+      "Slurred pairs"
+    ]
+  },
+  {
+    "Name": "Minuet No. 2 in C major",
+    "Composer": "Pleyel",
+    "Level": 1,
+    "Level_alias": "Absolute Beginner",
+    "Style": "Baroque/Classical",
+    "Suggested_practice": [
+      "C major scale (1 octave)",
+      "G major scale (1 octave)",
+      "Wohlfahrt Op. 45 No. 10",
+      "Position of 1st finger on G string",
+      "Bow speed control"
+    ]
+  },
+  {
+    "Name": "Happy Farmer",
+    "Composer": "Schumann",
+    "Level": 1,
+    "Level_alias": "Absolute Beginner",
+    "Style": "Romantic Character Piece",
+    "Suggested_practice": [
+      "G major scale (1 octave)",
+      "D major scale (1 octave)",
+      "Wohlfahrt Op. 45 No. 11",
+      "Accent bow exercises",
+      "Dynamic contrast exercises (p and f)"
+    ]
+  },
+  {
+    "Name": "Hunters' Chorus",
+    "Composer": "Weber (arr. Suzuki)",
+    "Level": 1,
+    "Level_alias": "Absolute Beginner",
+    "Style": "Romantic",
+    "Suggested_practice": [
+      "D major scale (1 octave)",
+      "A major scale (1 octave)",
+      "Wohlfahrt Op. 45 No. 12",
+      "Staccato bow introduction",
+      "F# placement exercise"
+    ]
+  },
+  {
+    "Name": "Long Long Ago",
+    "Composer": "Bayly (arr. Suzuki)",
+    "Level": 1,
+    "Level_alias": "Absolute Beginner",
+    "Style": "Victorian Ballad",
+    "Suggested_practice": [
+      "D major scale (1 octave)",
+      "Wohlfahrt Op. 45 No. 13",
+      "Slow cantabile bow exercises",
+      "Smooth string crossings"
+    ]
+  },
+  {
+    "Name": "Waltz in D major",
+    "Composer": "Brahms (arr. Suzuki)",
+    "Level": 1,
+    "Level_alias": "Absolute Beginner",
+    "Style": "Romantic Dance",
+    "Suggested_practice": [
+      "D major scale (1 octave)",
+      "G major scale (1 octave)",
+      "Wohlfahrt Op. 45 No. 14",
+      "Waltz rhythm bowing (long-short-short)",
+      "Lifting bow on rests"
+    ]
+  },
+  {
+    "Name": "Minuet No. 1 in G major (BWV Anh. 114)",
+    "Composer": "Bach (arr. Suzuki)",
+    "Level": 2,
+    "Level_alias": "Beginner",
+    "Style": "Baroque",
+    "Suggested_practice": [
+      "G major scale (2 octaves)",
+      "D major scale (2 octaves)",
+      "Wohlfahrt Op. 45 No. 15",
+      "Baroque bow style exercises",
+      "Slur groupings (2 notes, 4 notes)"
+    ]
+  },
+  {
+    "Name": "Minuet No. 2 in G minor (BWV Anh. 115)",
+    "Composer": "Bach (arr. Suzuki)",
+    "Level": 2,
+    "Level_alias": "Beginner",
+    "Style": "Baroque",
+    "Suggested_practice": [
+      "G minor scale (2 octaves)",
+      "D minor scale (1 octave)",
+      "Wohlfahrt Op. 45 No. 16",
+      "Low 2nd finger exercise",
+      "Minor key tonality exercises"
+    ]
+  },
+  {
+    "Name": "Minuet No. 3 in G major (BWV Anh. 114)",
+    "Composer": "Bach (arr. Suzuki)",
+    "Level": 2,
+    "Level_alias": "Beginner",
+    "Style": "Baroque",
+    "Suggested_practice": [
+      "G major scale (2 octaves)",
+      "Wohlfahrt Op. 45 No. 17",
+      "Position shifts preparation",
+      "Ornament introduction (trills)"
+    ]
+  },
+  {
+    "Name": "The Two Grenadiers",
+    "Composer": "Schumann (arr. Suzuki)",
+    "Level": 2,
+    "Level_alias": "Beginner",
+    "Style": "Romantic",
+    "Suggested_practice": [
+      "D minor scale (2 octaves)",
+      "A minor scale (1 octave)",
+      "Wohlfahrt Op. 45 No. 18",
+      "Dramatic bow pressure exercises",
+      "Dynamic range exercises"
+    ]
+  },
+  {
+    "Name": "Musette in D major (BWV Anh. 126)",
+    "Composer": "Bach (arr. Suzuki)",
+    "Level": 2,
+    "Level_alias": "Beginner",
+    "Style": "Baroque",
+    "Suggested_practice": [
+      "D major scale (2 octaves)",
+      "Wohlfahrt Op. 45 No. 19",
+      "Drone string technique",
+      "Open A string pedal point exercises"
+    ]
+  },
+  {
+    "Name": "Chorus from Judas Maccabaeus",
+    "Composer": "Handel (arr. Suzuki)",
+    "Level": 2,
+    "Level_alias": "Beginner",
+    "Style": "Baroque",
+    "Suggested_practice": [
+      "G major scale (2 octaves)",
+      "Wohlfahrt Op. 45 No. 20",
+      "Stately bow style",
+      "Forte tone production"
+    ]
+  },
+  {
+    "Name": "Gavotte in D major",
+    "Composer": "Gossec",
+    "Level": 2,
+    "Level_alias": "Beginner",
+    "Style": "Classical",
+    "Suggested_practice": [
+      "D major scale (2 octaves)",
+      "A major scale (2 octaves)",
+      "Wohlfahrt Op. 45 No. 21",
+      "Up-bow staccato introduction",
+      "Gavotte rhythm exercises"
+    ]
+  },
+  {
+    "Name": "O Mio Babbino Caro",
+    "Composer": "Puccini (arr.)",
+    "Level": 2,
+    "Level_alias": "Beginner",
+    "Style": "Opera/Romantic",
+    "Suggested_practice": [
+      "G major scale (2 octaves)",
+      "D major scale (2 octaves)",
+      "Wohlfahrt Op. 45 No. 22",
+      "Cantabile bow exercises",
+      "Portato bowing"
+    ]
+  },
+  {
+    "Name": "Etude in A major",
+    "Composer": "Wohlfahrt Op. 45 No. 23",
+    "Level": 2,
+    "Level_alias": "Beginner",
+    "Style": "Classical Etude",
+    "Suggested_practice": [
+      "A major scale (2 octaves)",
+      "E major scale (1 octave)",
+      "Schradieck Book 1 No. 5",
+      "String crossing patterns",
+      "Whole bow exercises"
+    ]
+  },
+  {
+    "Name": "Bourree in E minor (BWV 996)",
+    "Composer": "Bach (arr.)",
+    "Level": 2,
+    "Level_alias": "Beginner",
+    "Style": "Baroque",
+    "Suggested_practice": [
+      "E minor scale (2 octaves)",
+      "G major scale (2 octaves)",
+      "Wohlfahrt Op. 45 No. 24",
+      "Dance rhythm bowing",
+      "Articulation exercises"
+    ]
+  },
+  {
+    "Name": "Mazurka in G major",
+    "Composer": "Elgar",
+    "Level": 2,
+    "Level_alias": "Beginner",
+    "Style": "Dance/Romantic",
+    "Suggested_practice": [
+      "G major scale (2 octaves)",
+      "Wohlfahrt Op. 45 No. 25",
+      "Mazurka rhythm (accent on beat 2 or 3)",
+      "Spiccato bow introduction"
+    ]
+  },
+  {
+    "Name": "Lullaby (Wiegenlied)",
+    "Composer": "Brahms (arr.)",
+    "Level": 2,
+    "Level_alias": "Beginner",
+    "Style": "Romantic",
+    "Suggested_practice": [
+      "F major scale (1 octave)",
+      "G major scale (2 octaves)",
+      "Wohlfahrt Op. 45 No. 26",
+      "Smooth slur exercises",
+      "Pp tone production"
+    ]
+  },
+  {
+    "Name": "Ave Maria",
+    "Composer": "Schubert (arr.)",
+    "Level": 2,
+    "Level_alias": "Beginner",
+    "Style": "Romantic",
+    "Suggested_practice": [
+      "Bb major scale (1 octave)",
+      "F major scale (1 octave)",
+      "Wohlfahrt Op. 45 No. 27",
+      "Portamento introduction",
+      "Long bow cantabile exercises"
+    ]
+  },
+  {
+    "Name": "Arietta",
+    "Composer": "Martini",
+    "Level": 2,
+    "Level_alias": "Beginner",
+    "Style": "Baroque/Classical",
+    "Suggested_practice": [
+      "G major scale (2 octaves)",
+      "D major scale (2 octaves)",
+      "Wohlfahrt Op. 45 No. 28",
+      "Ornament exercises",
+      "Light bow articulation"
+    ]
+  },
+  {
+    "Name": "The Happy Farmer (from Album for the Young)",
+    "Composer": "Schumann",
+    "Level": 2,
+    "Level_alias": "Beginner",
+    "Style": "Romantic Character Piece",
+    "Suggested_practice": [
+      "G major scale (2 octaves)",
+      "D major scale (2 octaves)",
+      "Wohlfahrt Op. 45 No. 29",
+      "Forte bow strokes",
+      "Accent on downbeats"
+    ]
+  },
+  {
+    "Name": "Concerto in A minor, Op. 3 No. 6 (1st mvt)",
+    "Composer": "Vivaldi",
+    "Level": 3,
+    "Level_alias": "Early Intermediate",
+    "Style": "Baroque Concerto",
+    "Suggested_practice": [
+      "A minor scale (2 octaves)",
+      "D minor scale (2 octaves)",
+      "Wohlfahrt Op. 45 No. 30",
+      "Kayser Op. 20 No. 1",
+      "Détaché bow strokes at moderate tempo",
+      "Baroque ornamentation exercises"
+    ]
+  },
+  {
+    "Name": "Concerto No. 1 in A minor (1st mvt)",
+    "Composer": "Seitz",
+    "Level": 3,
+    "Level_alias": "Early Intermediate",
+    "Style": "Romantic Concerto",
+    "Suggested_practice": [
+      "A minor scale (2 octaves, slurred)",
+      "C major scale (2 octaves)",
+      "Kayser Op. 20 No. 2",
+      "Wohlfahrt Op. 45 No. 31",
+      "Shifting to 3rd position introduction"
+    ]
+  },
+  {
+    "Name": "Concerto No. 2 in G major (1st mvt)",
+    "Composer": "Seitz",
+    "Level": 3,
+    "Level_alias": "Early Intermediate",
+    "Style": "Romantic Concerto",
+    "Suggested_practice": [
+      "G major scale (2 octaves)",
+      "D major scale (2 octaves)",
+      "Kayser Op. 20 No. 3",
+      "Wohlfahrt Op. 45 No. 32",
+      "3rd position exercises"
+    ]
+  },
+  {
+    "Name": "Concerto No. 3 in B minor (1st mvt)",
+    "Composer": "Seitz",
+    "Level": 3,
+    "Level_alias": "Early Intermediate",
+    "Style": "Romantic Concerto",
+    "Suggested_practice": [
+      "B minor scale (2 octaves)",
+      "D major scale (2 octaves)",
+      "Kayser Op. 20 No. 4",
+      "Wohlfahrt Op. 45 No. 33",
+      "Détaché in upper half of bow"
+    ]
+  },
+  {
+    "Name": "Concerto No. 5 in D major (1st mvt)",
+    "Composer": "Seitz",
+    "Level": 3,
+    "Level_alias": "Early Intermediate",
+    "Style": "Romantic Concerto",
+    "Suggested_practice": [
+      "D major scale (2 octaves)",
+      "A major scale (2 octaves)",
+      "Kayser Op. 20 No. 5",
+      "Sautillé bow introduction",
+      "Running 16th note passages"
+    ]
+  },
+  {
+    "Name": "La Folia Variations",
+    "Composer": "Corelli (arr.)",
+    "Level": 3,
+    "Level_alias": "Early Intermediate",
+    "Style": "Baroque",
+    "Suggested_practice": [
+      "D minor scale (2 octaves)",
+      "A minor scale (2 octaves)",
+      "Kayser Op. 20 No. 6",
+      "Variation bowing patterns",
+      "Trills on all fingers"
+    ]
+  },
+  {
+    "Name": "Gavotte",
+    "Composer": "Lully (arr.)",
+    "Level": 3,
+    "Level_alias": "Early Intermediate",
+    "Style": "Baroque Dance",
+    "Suggested_practice": [
+      "G major scale (2 octaves)",
+      "C major scale (2 octaves)",
+      "Kayser Op. 20 No. 7",
+      "French bow style exercises",
+      "Danced rhythm internalization"
+    ]
+  },
+  {
+    "Name": "Bourrée (Suite in E minor, BWV 996)",
+    "Composer": "Bach",
+    "Level": 3,
+    "Level_alias": "Early Intermediate",
+    "Style": "Baroque",
+    "Suggested_practice": [
+      "E minor scale (2 octaves)",
+      "G major scale (2 octaves)",
+      "Kayser Op. 20 No. 8",
+      "Finger pattern exercises on all strings",
+      "Articulation in lower half of bow"
+    ]
+  },
+  {
+    "Name": "Humoresque Op. 101 No. 7",
+    "Composer": "Dvořák (arr.)",
+    "Level": 3,
+    "Level_alias": "Early Intermediate",
+    "Style": "Romantic Character Piece",
+    "Suggested_practice": [
+      "Gb major scale (1 octave)",
+      "G major scale (2 octaves)",
+      "Kayser Op. 20 No. 9",
+      "Dotted rhythm exercises",
+      "Syncopation bowing"
+    ]
+  },
+  {
+    "Name": "Liebeslied (Love Song)",
+    "Composer": "Kreisler",
+    "Level": 3,
+    "Level_alias": "Early Intermediate",
+    "Style": "Romantic Character Piece",
+    "Suggested_practice": [
+      "F major scale (2 octaves)",
+      "A minor scale (2 octaves)",
+      "Kayser Op. 20 No. 10",
+      "Vibrato introduction",
+      "Portamento bow exercises"
+    ]
+  },
+  {
+    "Name": "Country Dance",
+    "Composer": "Beethoven (arr.)",
+    "Level": 3,
+    "Level_alias": "Early Intermediate",
+    "Style": "Classical",
+    "Suggested_practice": [
+      "C major scale (2 octaves)",
+      "G major scale (2 octaves)",
+      "Kayser Op. 20 No. 11",
+      "Sturdy down-bow strokes",
+      "Double stops introduction"
+    ]
+  },
+  {
+    "Name": "Minuet in G (from Boccherini String Quintet)",
+    "Composer": "Boccherini (arr.)",
+    "Level": 3,
+    "Level_alias": "Early Intermediate",
+    "Style": "Classical",
+    "Suggested_practice": [
+      "G major scale (2 octaves)",
+      "D major scale (2 octaves)",
+      "Kayser Op. 20 No. 12",
+      "Graceful bow articulation",
+      "Piano dynamic control"
+    ]
+  },
+  {
+    "Name": "Fiocco Allegro",
+    "Composer": "Fiocco (arr. Bent)",
+    "Level": 3,
+    "Level_alias": "Early Intermediate",
+    "Style": "Baroque",
+    "Suggested_practice": [
+      "G major scale (2 octaves)",
+      "D major scale (2 octaves)",
+      "Kayser Op. 20 No. 13",
+      "Sautillé stroke development",
+      "Rapid string crossing"
+    ]
+  },
+  {
+    "Name": "Arietta",
+    "Composer": "Elgar",
+    "Level": 3,
+    "Level_alias": "Early Intermediate",
+    "Style": "Romantic",
+    "Suggested_practice": [
+      "E major scale (2 octaves)",
+      "A major scale (2 octaves)",
+      "Kayser Op. 20 No. 14",
+      "Sustained cantabile exercises",
+      "Portato bowing"
+    ]
+  },
+  {
+    "Name": "The Entertainer",
+    "Composer": "Joplin (arr.)",
+    "Level": 3,
+    "Level_alias": "Early Intermediate",
+    "Style": "Ragtime/Jazz",
+    "Suggested_practice": [
+      "F major scale (2 octaves)",
+      "C major scale (2 octaves)",
+      "Kayser Op. 20 No. 15",
+      "Syncopated rhythm exercises",
+      "Light spiccato bow"
+    ]
+  },
+  {
+    "Name": "Étude in A minor",
+    "Composer": "Kayser Op. 20 No. 16",
+    "Level": 3,
+    "Level_alias": "Early Intermediate",
+    "Style": "Classical Etude",
+    "Suggested_practice": [
+      "A minor scale (2 octaves, harmonic and melodic)",
+      "E minor scale (2 octaves)",
+      "Schradieck Book 1 No. 8",
+      "Rapid détaché exercises",
+      "Even left-hand finger placement"
+    ]
+  },
+  {
+    "Name": "Sonatina Op. 137 No. 1 (1st mvt)",
+    "Composer": "Schubert",
+    "Level": 3,
+    "Level_alias": "Early Intermediate",
+    "Style": "Classical/Early Romantic",
+    "Suggested_practice": [
+      "D major scale (2 octaves)",
+      "A major scale (2 octaves)",
+      "Kayser Op. 20 No. 17",
+      "Singing tone exercises",
+      "Coordination of bow and finger changes"
+    ]
+  },
+  {
+    "Name": "Passepied",
+    "Composer": "Delibes (arr.)",
+    "Level": 3,
+    "Level_alias": "Early Intermediate",
+    "Style": "French Classical",
+    "Suggested_practice": [
+      "G major scale (2 octaves)",
+      "E minor scale (2 octaves)",
+      "Kayser Op. 20 No. 18",
+      "Light sautillé introduction",
+      "Triplet exercises"
+    ]
+  },
+  {
+    "Name": "Concerto in A minor Op. 3 No. 6 (complete)",
+    "Composer": "Vivaldi",
+    "Level": 4,
+    "Level_alias": "Intermediate",
+    "Style": "Baroque Concerto",
+    "Suggested_practice": [
+      "A minor scale (3 octaves)",
+      "D minor scale (2 octaves)",
+      "Kayser Op. 20 No. 20",
+      "Wohlfahrt Op. 74 No. 1",
+      "Detaché at various tempos",
+      "Baroque cadenza style"
+    ]
+  },
+  {
+    "Name": "Concerto in G minor Op. 8 No. 2 'Summer' (1st mvt)",
+    "Composer": "Vivaldi",
+    "Level": 4,
+    "Level_alias": "Intermediate",
+    "Style": "Baroque Concerto",
+    "Suggested_practice": [
+      "G minor scale (3 octaves)",
+      "Bb major scale (2 octaves)",
+      "Kayser Op. 20 No. 21",
+      "Rapid détaché bow",
+      "Tremolo technique introduction"
+    ]
+  },
+  {
+    "Name": "Concerto in A minor Op. 3 No. 8 (1st mvt)",
+    "Composer": "Vivaldi",
+    "Level": 4,
+    "Level_alias": "Intermediate",
+    "Style": "Baroque Concerto",
+    "Suggested_practice": [
+      "A minor scale (3 octaves)",
+      "C major scale (3 octaves)",
+      "Mazas Op. 36 No. 1",
+      "Running passage work",
+      "Trill exercises"
+    ]
+  },
+  {
+    "Name": "Concerto in E major Op. 8 No. 1 'Spring' (1st mvt)",
+    "Composer": "Vivaldi",
+    "Level": 4,
+    "Level_alias": "Intermediate",
+    "Style": "Baroque Concerto",
+    "Suggested_practice": [
+      "E major scale (3 octaves)",
+      "A major scale (3 octaves)",
+      "Mazas Op. 36 No. 2",
+      "Rapid sautillé",
+      "Trill passages"
+    ]
+  },
+  {
+    "Name": "Concerto for Two Violins in D minor (1st mvt)",
+    "Composer": "Bach BWV 1043",
+    "Level": 4,
+    "Level_alias": "Intermediate",
+    "Style": "Baroque Concerto",
+    "Suggested_practice": [
+      "D minor scale (3 octaves)",
+      "F major scale (2 octaves)",
+      "Mazas Op. 36 No. 3",
+      "Imitative counterpoint listening exercises",
+      "Unified bow speed with ensemble"
+    ]
+  },
+  {
+    "Name": "Violin Sonata No. 1 in G minor, Op. 78",
+    "Composer": "Brahms",
+    "Level": 4,
+    "Level_alias": "Intermediate",
+    "Style": "Romantic Sonata",
+    "Suggested_practice": [
+      "G minor scale (3 octaves)",
+      "Bb major scale (3 octaves)",
+      "Mazas Op. 36 No. 4",
+      "Double stop thirds introduction",
+      "Singing tone with vibrato"
+    ]
+  },
+  {
+    "Name": "Sonatina in G major, Op. 100",
+    "Composer": "Dvořák",
+    "Level": 4,
+    "Level_alias": "Intermediate",
+    "Style": "Romantic Sonatina",
+    "Suggested_practice": [
+      "G major scale (3 octaves)",
+      "D major scale (3 octaves)",
+      "Mazas Op. 36 No. 5",
+      "Lyrical bow control",
+      "3rd position exercises"
+    ]
+  },
+  {
+    "Name": "Mazurka in G minor, Op. 33 No. 1",
+    "Composer": "Wieniawski",
+    "Level": 4,
+    "Level_alias": "Intermediate",
+    "Style": "Romantic Dance",
+    "Suggested_practice": [
+      "G minor scale (3 octaves)",
+      "Bb major scale (3 octaves)",
+      "Mazas Op. 36 No. 6",
+      "Polish mazurka rhythm exercises",
+      "Sautillé bowing"
+    ]
+  },
+  {
+    "Name": "Romance in F major, Op. 50",
+    "Composer": "Beethoven (arr.)",
+    "Level": 4,
+    "Level_alias": "Intermediate",
+    "Style": "Classical Romance",
+    "Suggested_practice": [
+      "F major scale (3 octaves)",
+      "D minor scale (2 octaves)",
+      "Mazas Op. 36 No. 7",
+      "Long bow exercises",
+      "Vibrato speed control"
+    ]
+  },
+  {
+    "Name": "Elegy, Op. 24",
+    "Composer": "Fauré (arr.)",
+    "Level": 4,
+    "Level_alias": "Intermediate",
+    "Style": "French Romantic",
+    "Suggested_practice": [
+      "D minor scale (3 octaves)",
+      "F major scale (3 octaves)",
+      "Mazas Op. 36 No. 8",
+      "Intense vibrato exercises",
+      "Soulful tone development"
+    ]
+  },
+  {
+    "Name": "Melodie Op. 42 No. 3",
+    "Composer": "Tchaikovsky (arr. Kreisler)",
+    "Level": 4,
+    "Level_alias": "Intermediate",
+    "Style": "Romantic",
+    "Suggested_practice": [
+      "C# minor scale (2 octaves)",
+      "E major scale (3 octaves)",
+      "Mazas Op. 36 No. 9",
+      "Portamento exercises",
+      "Singing bow arm"
+    ]
+  },
+  {
+    "Name": "Andantino (from Sonatina in F)",
+    "Composer": "Schubert (arr.)",
+    "Level": 4,
+    "Level_alias": "Intermediate",
+    "Style": "Classical/Early Romantic",
+    "Suggested_practice": [
+      "F major scale (2 octaves)",
+      "D minor scale (2 octaves)",
+      "Mazas Op. 36 No. 10",
+      "Legato bow coordination",
+      "Dynamic shaping exercises"
+    ]
+  },
+  {
+    "Name": "Salut d'Amour, Op. 12",
+    "Composer": "Elgar",
+    "Level": 4,
+    "Level_alias": "Intermediate",
+    "Style": "Romantic Character Piece",
+    "Suggested_practice": [
+      "E major scale (3 octaves)",
+      "A major scale (3 octaves)",
+      "Mazas Op. 36 No. 11",
+      "Light vibrato",
+      "Graceful bow changes"
+    ]
+  },
+  {
+    "Name": "Meditation from Thaïs",
+    "Composer": "Massenet (arr.)",
+    "Level": 4,
+    "Level_alias": "Intermediate",
+    "Style": "French Romantic Opera",
+    "Suggested_practice": [
+      "D major scale (3 octaves)",
+      "B minor scale (2 octaves)",
+      "Mazas Op. 36 No. 12",
+      "Vocal bow style",
+      "Sustained vibrato"
+    ]
+  },
+  {
+    "Name": "La Gitana",
+    "Composer": "Kreisler",
+    "Level": 4,
+    "Level_alias": "Intermediate",
+    "Style": "Spanish/Character Piece",
+    "Suggested_practice": [
+      "A minor (harmonic) scale (2 octaves)",
+      "E minor scale (2 octaves)",
+      "Mazas Op. 36 No. 13",
+      "Flamenco-style bow accents",
+      "Rapid ornamental figures"
+    ]
+  },
+  {
+    "Name": "Scottish Fantasy, Op. 46 (Finale only)",
+    "Composer": "Bruch (simplified arr.)",
+    "Level": 4,
+    "Level_alias": "Intermediate",
+    "Style": "Romantic/Scottish Folk Themes",
+    "Suggested_practice": [
+      "Eb major scale (2 octaves)",
+      "C minor scale (2 octaves)",
+      "Mazas Op. 36 No. 14",
+      "Folk-style bow articulation",
+      "Pentatonic scale exercises"
+    ]
+  },
+  {
+    "Name": "Rondo Brillante in Eb, Op. 22",
+    "Composer": "Weber (arr.)",
+    "Level": 4,
+    "Level_alias": "Intermediate",
+    "Style": "Classical Showpiece",
+    "Suggested_practice": [
+      "Eb major scale (2 octaves)",
+      "Bb major scale (3 octaves)",
+      "Mazas Op. 36 No. 15",
+      "Spiccato development",
+      "Fast string crossings"
+    ]
+  },
+  {
+    "Name": "Havanaise, Op. 83",
+    "Composer": "Saint-Saëns",
+    "Level": 4,
+    "Level_alias": "Intermediate",
+    "Style": "French Romantic/Cuban",
+    "Suggested_practice": [
+      "E major scale (3 octaves)",
+      "A major scale (3 octaves)",
+      "Mazas Op. 36 No. 16",
+      "Habanera rhythm exercises",
+      "Ricochet introduction"
+    ]
+  },
+  {
+    "Name": "Violin Concerto No. 5 in A minor, Op. 37 (1st mvt)",
+    "Composer": "Seitz",
+    "Level": 4,
+    "Level_alias": "Intermediate",
+    "Style": "Romantic Concerto",
+    "Suggested_practice": [
+      "A minor scale (3 octaves)",
+      "C major scale (3 octaves)",
+      "Mazas Op. 36 No. 17",
+      "Concerto passage work",
+      "Shifting exercises"
+    ]
+  },
+  {
+    "Name": "Concerto in D major, Op. 22 (1st mvt)",
+    "Composer": "Accolay",
+    "Level": 4,
+    "Level_alias": "Intermediate",
+    "Style": "Romantic Concerto",
+    "Suggested_practice": [
+      "D major scale (3 octaves)",
+      "A major scale (3 octaves)",
+      "Mazas Op. 36 No. 18",
+      "Cadenza development",
+      "Strong bow on E string"
+    ]
+  },
+  {
+    "Name": "Introduction and Rondo Capriccioso, Op. 28",
+    "Composer": "Saint-Saëns",
+    "Level": 5,
+    "Level_alias": "Advanced Intermediate",
+    "Style": "French Romantic Showpiece",
+    "Suggested_practice": [
+      "A minor scale (3 octaves, all bowings)",
+      "C major scale (3 octaves)",
+      "Dont Op. 37 No. 1",
+      "Spiccato and ricochet exercises",
+      "Rapid scale passages",
+      "Fiorillo No. 1"
+    ]
+  },
+  {
+    "Name": "Violin Concerto No. 2 in D minor, Op. 22 (1st mvt)",
+    "Composer": "Wieniawski",
+    "Level": 5,
+    "Level_alias": "Advanced Intermediate",
+    "Style": "Romantic Concerto",
+    "Suggested_practice": [
+      "D minor scale (3 octaves)",
+      "F major scale (3 octaves)",
+      "Dont Op. 37 No. 2",
+      "Sustained legato exercises",
+      "Romantic vibrato control",
+      "Fiorillo No. 2"
+    ]
+  },
+  {
+    "Name": "Violin Concerto in G minor, Op. 26 (1st mvt)",
+    "Composer": "Bruch",
+    "Level": 5,
+    "Level_alias": "Advanced Intermediate",
+    "Style": "Romantic Concerto",
+    "Suggested_practice": [
+      "G minor scale (3 octaves)",
+      "Bb major scale (3 octaves)",
+      "Dont Op. 37 No. 3",
+      "Singing tone exercises",
+      "Large-bow cantabile",
+      "Fiorillo No. 3"
+    ]
+  },
+  {
+    "Name": "Violin Concerto No. 3 in B minor, Op. 61 (1st mvt)",
+    "Composer": "Saint-Saëns",
+    "Level": 5,
+    "Level_alias": "Advanced Intermediate",
+    "Style": "Romantic Concerto",
+    "Suggested_practice": [
+      "B minor scale (3 octaves)",
+      "D major scale (3 octaves)",
+      "Dont Op. 37 No. 4",
+      "Octave passage exercises",
+      "Fiorillo No. 4"
+    ]
+  },
+  {
+    "Name": "Violin Sonata No. 1 in G major, Op. 78",
+    "Composer": "Brahms",
+    "Level": 5,
+    "Level_alias": "Advanced Intermediate",
+    "Style": "Romantic Sonata",
+    "Suggested_practice": [
+      "G major scale (3 octaves, double stops in thirds)",
+      "Eb major scale (3 octaves)",
+      "Dont Op. 37 No. 5",
+      "Double stop thirds and sixths",
+      "Fiorillo No. 5"
+    ]
+  },
+  {
+    "Name": "Violin Sonata in A major, Op. 100",
+    "Composer": "Dvořák",
+    "Level": 5,
+    "Level_alias": "Advanced Intermediate",
+    "Style": "Late Romantic Sonata",
+    "Suggested_practice": [
+      "A major scale (3 octaves)",
+      "F# minor scale (3 octaves)",
+      "Dont Op. 37 No. 6",
+      "Czech folk idioms",
+      "Fiorillo No. 6"
+    ]
+  },
+  {
+    "Name": "Tzigane",
+    "Composer": "Ravel",
+    "Level": 5,
+    "Level_alias": "Advanced Intermediate",
+    "Style": "French/Romani",
+    "Suggested_practice": [
+      "G# minor scale (3 octaves)",
+      "B major scale (3 octaves)",
+      "Dont Op. 37 No. 7",
+      "Sul ponticello exercises",
+      "Hungarian/Romani ornaments",
+      "Fiorillo No. 7"
+    ]
+  },
+  {
+    "Name": "La Campanella (transcription)",
+    "Composer": "Paganini (arr. Kreisler)",
+    "Level": 5,
+    "Level_alias": "Advanced Intermediate",
+    "Style": "Virtuoso",
+    "Suggested_practice": [
+      "E major scale (3 octaves, harmonics)",
+      "B major scale (3 octaves)",
+      "Dont Op. 37 No. 8",
+      "Harmonic exercises",
+      "Fiorillo No. 8"
+    ]
+  },
+  {
+    "Name": "Schindler's List Theme",
+    "Composer": "Williams (arr.)",
+    "Level": 5,
+    "Level_alias": "Advanced Intermediate",
+    "Style": "Film/Contemporary",
+    "Suggested_practice": [
+      "D minor scale (3 octaves)",
+      "F major scale (3 octaves)",
+      "Dont Op. 37 No. 9",
+      "Expressive vibrato exercises",
+      "Sul tasto tone color"
+    ]
+  },
+  {
+    "Name": "Oblivion",
+    "Composer": "Piazzolla (arr.)",
+    "Level": 5,
+    "Level_alias": "Advanced Intermediate",
+    "Style": "Tango",
+    "Suggested_practice": [
+      "C minor scale (3 octaves)",
+      "Eb major scale (3 octaves)",
+      "Dont Op. 37 No. 10",
+      "Marcato bowing",
+      "Tango rhythm exercises",
+      "Fiorillo No. 10"
+    ]
+  },
+  {
+    "Name": "Libertango",
+    "Composer": "Piazzolla (arr.)",
+    "Level": 5,
+    "Level_alias": "Advanced Intermediate",
+    "Style": "Tango Nuevo",
+    "Suggested_practice": [
+      "B minor scale (3 octaves)",
+      "D major scale (3 octaves)",
+      "Dont Op. 37 No. 11",
+      "Col legno technique",
+      "Tango syncopation exercises"
+    ]
+  },
+  {
+    "Name": "Zigeunerweisen, Op. 20",
+    "Composer": "Sarasate",
+    "Level": 5,
+    "Level_alias": "Advanced Intermediate",
+    "Style": "Virtuoso/Romani",
+    "Suggested_practice": [
+      "C minor scale (3 octaves)",
+      "Eb major scale (3 octaves)",
+      "Dont Op. 37 No. 12",
+      "Hungarian scale exercises",
+      "Rapid ricochet",
+      "Fiorillo No. 12"
+    ]
+  },
+  {
+    "Name": "Carmen Fantasy, Op. 25",
+    "Composer": "Sarasate",
+    "Level": 5,
+    "Level_alias": "Advanced Intermediate",
+    "Style": "Spanish Virtuoso",
+    "Suggested_practice": [
+      "D minor scale (3 octaves)",
+      "F major scale (3 octaves)",
+      "Dont Op. 37 No. 13",
+      "Spanish bow style",
+      "Rapid spiccato and détaché alternation"
+    ]
+  },
+  {
+    "Name": "Summer Presto (from The Four Seasons)",
+    "Composer": "Vivaldi",
+    "Level": 5,
+    "Level_alias": "Advanced Intermediate",
+    "Style": "Baroque Concerto",
+    "Suggested_practice": [
+      "G minor scale (3 octaves)",
+      "G major scale (3 octaves)",
+      "Dont Op. 37 No. 14",
+      "Rapid sixteenth-note runs",
+      "Fiorillo No. 14"
+    ]
+  },
+  {
+    "Name": "Violin Sonata in A minor (BWV 1003) - Andante",
+    "Composer": "Bach",
+    "Level": 5,
+    "Level_alias": "Advanced Intermediate",
+    "Style": "Baroque",
+    "Suggested_practice": [
+      "A minor scale (3 octaves)",
+      "C major scale (3 octaves)",
+      "Dont Op. 37 No. 15",
+      "Bach arpeggiation technique",
+      "Unaccompanied voice leading exercises"
+    ]
+  },
+  {
+    "Name": "Violin Sonata Op. 24 'Spring' (1st mvt)",
+    "Composer": "Beethoven",
+    "Level": 5,
+    "Level_alias": "Advanced Intermediate",
+    "Style": "Classical Sonata",
+    "Suggested_practice": [
+      "F major scale (3 octaves)",
+      "D minor scale (3 octaves)",
+      "Dont Op. 37 No. 16",
+      "Classical phrasing and balance",
+      "Fiorillo No. 16"
+    ]
+  },
+  {
+    "Name": "Violin Concerto No. 1 in D major, Op. 6 (1st mvt)",
+    "Composer": "Paganini",
+    "Level": 6,
+    "Level_alias": "Upper Intermediate",
+    "Style": "Romantic Virtuoso Concerto",
+    "Suggested_practice": [
+      "D major scale (3 octaves, various bowings)",
+      "B minor scale (3 octaves)",
+      "Kreutzer No. 2",
+      "Dont Op. 35 No. 1",
+      "Harmonics exercises",
+      "Left-hand pizzicato exercises"
+    ]
+  },
+  {
+    "Name": "Violin Concerto in D major, Op. 35 (1st mvt)",
+    "Composer": "Tchaikovsky",
+    "Level": 6,
+    "Level_alias": "Upper Intermediate",
+    "Style": "Romantic Concerto",
+    "Suggested_practice": [
+      "D major scale (3 octaves, octaves)",
+      "D minor scale (3 octaves)",
+      "Kreutzer No. 2",
+      "Dont Op. 35 No. 2",
+      "Octave runs",
+      "Cadenza preparation"
+    ]
+  },
+  {
+    "Name": "Violin Concerto in E minor, Op. 64 (1st mvt)",
+    "Composer": "Mendelssohn",
+    "Level": 6,
+    "Level_alias": "Upper Intermediate",
+    "Style": "Romantic Concerto",
+    "Suggested_practice": [
+      "E minor scale (3 octaves)",
+      "G major scale (3 octaves, double stops)",
+      "Kreutzer No. 4",
+      "Dont Op. 35 No. 3",
+      "Lyrical passage work",
+      "Fiorillo No. 20"
+    ]
+  },
+  {
+    "Name": "Violin Concerto in A minor, Op. 82 (1st mvt)",
+    "Composer": "Glazunov",
+    "Level": 6,
+    "Level_alias": "Upper Intermediate",
+    "Style": "Late Romantic Concerto",
+    "Suggested_practice": [
+      "A minor scale (3 octaves, thirds and sixths)",
+      "C major scale (3 octaves)",
+      "Kreutzer No. 5",
+      "Dont Op. 35 No. 4",
+      "Russian Romantic style",
+      "Fiorillo No. 22"
+    ]
+  },
+  {
+    "Name": "Violin Concerto No. 2 in G minor, Op. 63 (1st mvt)",
+    "Composer": "Prokofiev",
+    "Level": 6,
+    "Level_alias": "Upper Intermediate",
+    "Style": "20th Century Concerto",
+    "Suggested_practice": [
+      "G minor scale (3 octaves)",
+      "Bb major scale (3 octaves)",
+      "Kreutzer No. 7",
+      "Dont Op. 35 No. 5",
+      "Modernist intonation challenges",
+      "Extended technique introduction"
+    ]
+  },
+  {
+    "Name": "Chaconne in D minor (Partita No. 2, BWV 1004)",
+    "Composer": "Bach",
+    "Level": 6,
+    "Level_alias": "Upper Intermediate",
+    "Style": "Baroque",
+    "Suggested_practice": [
+      "D minor scale (3 octaves, all positions)",
+      "F major scale (3 octaves)",
+      "Kreutzer No. 9",
+      "Dont Op. 35 No. 6",
+      "Chordal bow technique",
+      "Bach arpeggiation"
+    ]
+  },
+  {
+    "Name": "Kreutzer Sonata, Op. 47 (1st mvt)",
+    "Composer": "Beethoven",
+    "Level": 6,
+    "Level_alias": "Upper Intermediate",
+    "Style": "Classical Sonata",
+    "Suggested_practice": [
+      "A major/minor scale (3 octaves)",
+      "D major scale (3 octaves)",
+      "Kreutzer No. 11",
+      "Dont Op. 35 No. 7",
+      "Double stop thirds run",
+      "Fiorillo No. 25"
+    ]
+  },
+  {
+    "Name": "Violin Sonata No. 1 in G major, Op. 78 (complete)",
+    "Composer": "Brahms",
+    "Level": 6,
+    "Level_alias": "Upper Intermediate",
+    "Style": "Late Romantic Sonata",
+    "Suggested_practice": [
+      "G major scale (3 octaves, thirds and octaves)",
+      "Eb major scale (3 octaves)",
+      "Kreutzer No. 13",
+      "Dont Op. 35 No. 8",
+      "Double stop exercises",
+      "Fiorillo No. 28"
+    ]
+  },
+  {
+    "Name": "Caprice No. 24 in A minor",
+    "Composer": "Paganini",
+    "Level": 6,
+    "Level_alias": "Upper Intermediate",
+    "Style": "Virtuoso Caprice",
+    "Suggested_practice": [
+      "A minor scale (3 octaves, all positions)",
+      "A major scale (3 octaves)",
+      "Kreutzer No. 16",
+      "Dont Op. 35 No. 9",
+      "Variation bowing exercises",
+      "Fiorillo No. 30"
+    ]
+  },
+  {
+    "Name": "Violin Sonata No. 3 in D minor, Op. 108",
+    "Composer": "Brahms",
+    "Level": 6,
+    "Level_alias": "Upper Intermediate",
+    "Style": "Late Romantic Sonata",
+    "Suggested_practice": [
+      "D minor scale (3 octaves)",
+      "F major scale (3 octaves, thirds)",
+      "Kreutzer No. 18",
+      "Dont Op. 35 No. 10",
+      "Dense double stops",
+      "Fiorillo No. 32"
+    ]
+  },
+  {
+    "Name": "Violin Concerto No. 1 in A minor, Op. 77 (1st mvt)",
+    "Composer": "Shostakovich",
+    "Level": 6,
+    "Level_alias": "Upper Intermediate",
+    "Style": "20th Century Concerto",
+    "Suggested_practice": [
+      "A minor scale (3 octaves)",
+      "C major scale (3 octaves)",
+      "Kreutzer No. 20",
+      "Dont Op. 35 No. 11",
+      "Extended technique exercises",
+      "Modernist intonation"
+    ]
+  },
+  {
+    "Name": "Violin Sonata in G minor, Op. 1 No. 10 (Devil's Trill)",
+    "Composer": "Tartini",
+    "Level": 6,
+    "Level_alias": "Upper Intermediate",
+    "Style": "Baroque Showpiece",
+    "Suggested_practice": [
+      "G minor scale (3 octaves)",
+      "Bb major scale (3 octaves)",
+      "Kreutzer No. 19",
+      "Dont Op. 35 No. 12",
+      "Trill exercises (sustained trills)",
+      "Double stop trills"
+    ]
+  },
+  {
+    "Name": "Partita No. 3 in E major (Preludio)",
+    "Composer": "Bach BWV 1006",
+    "Level": 6,
+    "Level_alias": "Upper Intermediate",
+    "Style": "Baroque",
+    "Suggested_practice": [
+      "E major scale (3 octaves)",
+      "B major scale (3 octaves)",
+      "Kreutzer No. 22",
+      "Dont Op. 35 No. 13",
+      "Perpetuum mobile bow exercises",
+      "Fiorillo No. 35"
+    ]
+  },
+  {
+    "Name": "Fantasy in C major, Op. 159 (complete)",
+    "Composer": "Schubert",
+    "Level": 6,
+    "Level_alias": "Upper Intermediate",
+    "Style": "Romantic",
+    "Suggested_practice": [
+      "C major scale (3 octaves, octaves and thirds)",
+      "A minor scale (3 octaves)",
+      "Kreutzer No. 23",
+      "Dont Op. 35 No. 14",
+      "Lyrical Romantic style",
+      "Fiorillo No. 36"
+    ]
+  },
+  {
+    "Name": "Poème, Op. 25",
+    "Composer": "Chausson",
+    "Level": 6,
+    "Level_alias": "Upper Intermediate",
+    "Style": "French Romantic",
+    "Suggested_practice": [
+      "Eb major scale (3 octaves)",
+      "C minor scale (3 octaves)",
+      "Kreutzer No. 24",
+      "Dont Op. 35 No. 15",
+      "Impressionist tone color exercises",
+      "Fiorillo No. 38"
+    ]
+  },
+  {
+    "Name": "Violin Concerto in D major, Op. 61 (1st mvt)",
+    "Composer": "Beethoven",
+    "Level": 7,
+    "Level_alias": "Advanced",
+    "Style": "Classical Concerto",
+    "Suggested_practice": [
+      "D major scale (3 octaves, all double stop combinations)",
+      "B minor scale (3 octaves)",
+      "Kreutzer No. 33",
+      "Dont Op. 35 No. 20",
+      "Octave passages",
+      "Paganini Caprice No. 1"
+    ]
+  },
+  {
+    "Name": "Violin Concerto in D major, Op. 77 (1st mvt)",
+    "Composer": "Brahms",
+    "Level": 7,
+    "Level_alias": "Advanced",
+    "Style": "Late Romantic Concerto",
+    "Suggested_practice": [
+      "D major scale (3 octaves, sixths)",
+      "D minor scale (3 octaves)",
+      "Kreutzer No. 35",
+      "Dont Op. 35 No. 21",
+      "Dense octave and third passages",
+      "Paganini Caprice No. 5"
+    ]
+  },
+  {
+    "Name": "Violin Concerto in D major, Op. 35 (complete)",
+    "Composer": "Tchaikovsky",
+    "Level": 7,
+    "Level_alias": "Advanced",
+    "Style": "Romantic Concerto",
+    "Suggested_practice": [
+      "D major scale (3 octaves, all bowings)",
+      "A major scale (3 octaves, thirds)",
+      "Kreutzer No. 36",
+      "Dont Op. 35 No. 22",
+      "Cantilena exercises",
+      "Paganini Caprice No. 9"
+    ]
+  },
+  {
+    "Name": "Violin Sonata in A major, Op. 47 'Kreutzer' (complete)",
+    "Composer": "Beethoven",
+    "Level": 7,
+    "Level_alias": "Advanced",
+    "Style": "Classical Sonata",
+    "Suggested_practice": [
+      "A major/minor scale (3 octaves, all combinations)",
+      "F major scale (3 octaves, thirds)",
+      "Kreutzer No. 38",
+      "Dont Op. 35 No. 23",
+      "Fiocco-style ornaments",
+      "Paganini Caprice No. 13"
+    ]
+  },
+  {
+    "Name": "Violin Concerto in E minor, Op. 64 (complete)",
+    "Composer": "Mendelssohn",
+    "Level": 7,
+    "Level_alias": "Advanced",
+    "Style": "Romantic Concerto",
+    "Suggested_practice": [
+      "E minor scale (3 octaves, thirds and sixths)",
+      "G major scale (3 octaves, octaves)",
+      "Kreutzer No. 40",
+      "Dont Op. 35 No. 24",
+      "Romantic agility exercises",
+      "Paganini Caprice No. 17"
+    ]
+  },
+  {
+    "Name": "Violin Concerto No. 1, Op. 6 (complete)",
+    "Composer": "Paganini",
+    "Level": 7,
+    "Level_alias": "Advanced",
+    "Style": "Virtuoso Concerto",
+    "Suggested_practice": [
+      "D major scale (3 octaves, octaves and tenths)",
+      "B minor scale (3 octaves)",
+      "Paganini Caprice No. 1",
+      "Paganini Caprice No. 5",
+      "Left-hand pizzicato exercises",
+      "Harmonics scales"
+    ]
+  },
+  {
+    "Name": "Chaconne in D minor (complete)",
+    "Composer": "Bach BWV 1004",
+    "Level": 7,
+    "Level_alias": "Advanced",
+    "Style": "Baroque",
+    "Suggested_practice": [
+      "D minor scale (3 octaves, all forms)",
+      "F major scale (3 octaves, all double stops)",
+      "Kreutzer No. 42",
+      "Dont Op. 35 No. 25",
+      "Bach chordal technique",
+      "Paganini Caprice No. 20"
+    ]
+  },
+  {
+    "Name": "Violin Concerto No. 2 in D minor, Op. 22 (complete)",
+    "Composer": "Wieniawski",
+    "Level": 7,
+    "Level_alias": "Advanced",
+    "Style": "Romantic Virtuoso Concerto",
+    "Suggested_practice": [
+      "D minor scale (3 octaves, double stops)",
+      "F major scale (3 octaves)",
+      "Kreutzer No. 41",
+      "Dont Op. 35 No. 26",
+      "Lyrical and virtuoso balance",
+      "Paganini Caprice No. 21"
+    ]
+  },
+  {
+    "Name": "Violin Sonata No. 2 in A major, Op. 100 (Dvořák, complete)",
+    "Composer": "Dvořák",
+    "Level": 7,
+    "Level_alias": "Advanced",
+    "Style": "Late Romantic Sonata",
+    "Suggested_practice": [
+      "A major scale (3 octaves, thirds)",
+      "F# minor scale (3 octaves)",
+      "Kreutzer No. 43",
+      "Dont Op. 35 No. 27",
+      "Czech folk idiom exercises",
+      "Paganini Caprice No. 22"
+    ]
+  },
+  {
+    "Name": "Sonata for Violin and Piano in G major, Op. 78 (complete)",
+    "Composer": "Grieg",
+    "Level": 7,
+    "Level_alias": "Advanced",
+    "Style": "Romantic/Scandinavian",
+    "Suggested_practice": [
+      "G major scale (3 octaves, sixths)",
+      "E minor scale (3 octaves)",
+      "Kreutzer No. 44",
+      "Dont Op. 35 No. 28",
+      "Norwegian folk idiom exercises",
+      "Paganini Caprice No. 23"
+    ]
+  },
+  {
+    "Name": "Violin Concerto in D major, Op. 47",
+    "Composer": "Sibelius",
+    "Level": 7,
+    "Level_alias": "Advanced",
+    "Style": "Romantic/Nordic Concerto",
+    "Suggested_practice": [
+      "D major scale (3 octaves, all bowings)",
+      "B minor scale (3 octaves, double stops)",
+      "Paganini Caprice No. 2",
+      "Dont Op. 35 No. 29",
+      "Nordic Romantic style exercises",
+      "High-position intonation exercises"
+    ]
+  },
+  {
+    "Name": "Violin Concerto No. 1 in A minor, Op. 77 (complete)",
+    "Composer": "Shostakovich",
+    "Level": 7,
+    "Level_alias": "Advanced",
+    "Style": "20th Century Concerto",
+    "Suggested_practice": [
+      "A minor scale (3 octaves, chromatic variations)",
+      "C major scale (3 octaves, extended techniques)",
+      "Paganini Caprice No. 4",
+      "Dont Op. 35 No. 30",
+      "Modernist intonation training",
+      "Extreme dynamic exercises"
+    ]
+  },
+  {
+    "Name": "Sonata for Violin Solo No. 1 in G minor (BWV 1001)",
+    "Composer": "Bach",
+    "Level": 7,
+    "Level_alias": "Advanced",
+    "Style": "Baroque",
+    "Suggested_practice": [
+      "G minor scale (3 octaves, arpeggios)",
+      "Bb major scale (3 octaves)",
+      "Dont Op. 35 No. 31",
+      "Bach fugue voice independence",
+      "Paganini Caprice No. 15"
+    ]
+  },
+  {
+    "Name": "Violin Concerto No. 2 in G minor, Op. 63 (complete)",
+    "Composer": "Prokofiev",
+    "Level": 7,
+    "Level_alias": "Advanced",
+    "Style": "20th Century Concerto",
+    "Suggested_practice": [
+      "G minor scale (3 octaves, chromatic approaches)",
+      "Bb major scale (3 octaves)",
+      "Paganini Caprice No. 6",
+      "Dont Op. 35 No. 32",
+      "Prokofiev style articulation",
+      "Dissonant interval training"
+    ]
+  },
+  {
+    "Name": "La Ronde des Lutins, Op. 25",
+    "Composer": "Bazzini",
+    "Level": 7,
+    "Level_alias": "Advanced",
+    "Style": "Virtuoso Character Piece",
+    "Suggested_practice": [
+      "E major scale (3 octaves, harmonics)",
+      "C# minor scale (3 octaves)",
+      "Paganini Caprice No. 8",
+      "Dont Op. 35 No. 33",
+      "Ricochet extreme exercises",
+      "Rapid octave passages"
+    ]
+  },
+  {
+    "Name": "Violin Concerto in D major, Op. 77 (complete)",
+    "Composer": "Brahms",
+    "Level": 8,
+    "Level_alias": "Professional/Virtuoso",
+    "Style": "Late Romantic Concerto",
+    "Suggested_practice": [
+      "D major scale (3 octaves, all double stop types)",
+      "D minor scale (3 octaves, all positions)",
+      "Paganini Caprices 1–24 (selected)",
+      "Dont Op. 35 (complete set)",
+      "Octave scales in all keys",
+      "Cadenza preparation (Joachim)"
+    ]
+  },
+  {
+    "Name": "Violin Concerto in D major, Op. 61 (complete)",
+    "Composer": "Beethoven",
+    "Level": 8,
+    "Level_alias": "Professional/Virtuoso",
+    "Style": "Classical Concerto",
+    "Suggested_practice": [
+      "D major scale (3 octaves, sixths and thirds)",
+      "B minor scale (3 octaves)",
+      "Paganini Caprices 1–24 (all)",
+      "Dont Op. 35 complete",
+      "Ysaÿe Sonata No. 3 preparation",
+      "Cadenza development (Kreisler)"
+    ]
+  },
+  {
+    "Name": "Violin Concerto in F# minor, Op. 14",
+    "Composer": "Berg",
+    "Level": 8,
+    "Level_alias": "Professional/Virtuoso",
+    "Style": "20th Century/Atonal",
+    "Suggested_practice": [
+      "All chromatic scales (3 octaves)",
+      "F# minor scale (3 octaves)",
+      "Paganini Caprices No. 7, 11, 14",
+      "Dont Op. 35 complete",
+      "Twelve-tone row exercises",
+      "Quarter-tone intonation work"
+    ]
+  },
+  {
+    "Name": "Sonata for Violin Solo No. 2 (Obsession) Op. 27",
+    "Composer": "Ysaÿe",
+    "Level": 8,
+    "Level_alias": "Professional/Virtuoso",
+    "Style": "Late Romantic/Modern Solo",
+    "Suggested_practice": [
+      "All major/minor scales (3 octaves, all double stops)",
+      "Chromatic scale (3 octaves)",
+      "Paganini Caprices 3, 10, 21",
+      "Dont Op. 35 complete",
+      "Bach quotation exercises",
+      "Extreme register intonation"
+    ]
+  },
+  {
+    "Name": "Sonata for Violin Solo No. 3 (Ballade) Op. 27",
+    "Composer": "Ysaÿe",
+    "Level": 8,
+    "Level_alias": "Professional/Virtuoso",
+    "Style": "Late Romantic/Modern Solo",
+    "Suggested_practice": [
+      "All minor scales (3 octaves)",
+      "Chromatic passages in all positions",
+      "Paganini Caprices 12, 19, 23",
+      "Dont Op. 35 complete",
+      "Arpeggio exercises in all positions",
+      "Tone color and sul ponticello exercises"
+    ]
+  },
+  {
+    "Name": "Violin Concerto No. 1 in D major, Op. 6 (complete)",
+    "Composer": "Paganini",
+    "Level": 8,
+    "Level_alias": "Professional/Virtuoso",
+    "Style": "Virtuoso Concerto",
+    "Suggested_practice": [
+      "D major scale (3 octaves, tenths)",
+      "B minor scale (3 octaves)",
+      "Paganini Caprices 1–24 complete",
+      "Dont Op. 35 complete",
+      "Harmonics scales (all positions)",
+      "Left-hand pizzicato patterns"
+    ]
+  },
+  {
+    "Name": "Violin Concerto in D major, Op. 47 (complete)",
+    "Composer": "Sibelius",
+    "Level": 8,
+    "Level_alias": "Professional/Virtuoso",
+    "Style": "Nordic Late Romantic Concerto",
+    "Suggested_practice": [
+      "D major scale (3 octaves, all bowings, all double stops)",
+      "B minor scale (3 octaves)",
+      "Paganini Caprices 4, 13, 17",
+      "Dont Op. 35 complete",
+      "High-position intonation studies",
+      "Octave glissando exercises"
+    ]
+  },
+  {
+    "Name": "Violin Concerto No. 1 in A minor, Op. 77 (Passacaglia)",
+    "Composer": "Shostakovich",
+    "Level": 8,
+    "Level_alias": "Professional/Virtuoso",
+    "Style": "20th Century Concerto",
+    "Suggested_practice": [
+      "All minor scales (3 octaves, all double stops)",
+      "Chromatic scales (multiple positions)",
+      "Paganini Caprices 5, 8, 16",
+      "Dont Op. 35 complete",
+      "Extreme dynamic range exercises",
+      "Extended technique survey"
+    ]
+  },
+  {
+    "Name": "Violin Concerto in D major, Op. 21",
+    "Composer": "Lalo (Symphonie Espagnole)",
+    "Level": 8,
+    "Level_alias": "Professional/Virtuoso",
+    "Style": "French Romantic/Spanish",
+    "Suggested_practice": [
+      "D major scale (3 octaves, all bowings)",
+      "D minor scale (3 octaves)",
+      "Paganini Caprices 2, 9, 18",
+      "Dont Op. 35 complete",
+      "Spanish ornament exercises",
+      "Spiccato and ricochet at tempo"
+    ]
+  },
+  {
+    "Name": "Violin Concerto in A minor, Op. 53 (1st mvt)",
+    "Composer": "Dvořák",
+    "Level": 8,
+    "Level_alias": "Professional/Virtuoso",
+    "Style": "Late Romantic Concerto",
+    "Suggested_practice": [
+      "A minor scale (3 octaves, all double stops)",
+      "C major scale (3 octaves, octaves)",
+      "Paganini Caprices 6, 11, 20",
+      "Dont Op. 35 complete",
+      "Czech folk ornaments",
+      "Wide vibrato flexibility"
+    ]
+  },
+  {
+    "Name": "Violin Concerto No. 2, Op. 7 (complete)",
+    "Composer": "Bartók",
+    "Level": 8,
+    "Level_alias": "Professional/Virtuoso",
+    "Style": "20th Century/Folk-Modernism",
+    "Suggested_practice": [
+      "All scales including microtonal variants",
+      "Chromatic scale (full range)",
+      "Paganini Caprices 14, 22, 24",
+      "Dont Op. 35 complete",
+      "Bartók pizzicato exercises",
+      "Quarter-tone and microinterval intonation"
+    ]
+  },
+  {
+    "Name": "Sonata for Solo Violin (1944)",
+    "Composer": "Bartók",
+    "Level": 8,
+    "Level_alias": "Professional/Virtuoso",
+    "Style": "20th Century Solo",
+    "Suggested_practice": [
+      "All scales (chromatic and modal)",
+      "Double harmonics exercises",
+      "Paganini Caprices 7, 15, 21",
+      "Dont Op. 35 complete",
+      "Bartók pizzicato and col legno",
+      "Extreme position studies"
+    ]
+  },
+  {
+    "Name": "Violin Concerto No. 1 in G minor, Op. 26 (complete)",
+    "Composer": "Bruch",
+    "Level": 8,
+    "Level_alias": "Professional/Virtuoso",
+    "Style": "Romantic Concerto",
+    "Suggested_practice": [
+      "G minor scale (3 octaves, thirds and sixths)",
+      "Bb major scale (3 octaves, octaves)",
+      "Paganini Caprices 3, 12, 19",
+      "Dont Op. 35 complete",
+      "Romantic singing tone exercises",
+      "Cadenza preparation"
+    ]
+  },
+  {
+    "Name": "Violin Concerto in D major, Op. 15",
+    "Composer": "Glass (Philip)",
+    "Level": 8,
+    "Level_alias": "Professional/Virtuoso",
+    "Style": "Minimalist/Contemporary",
+    "Suggested_practice": [
+      "D major scale (3 octaves, arpeggios)",
+      "D minor scale (3 octaves)",
+      "Paganini Caprices 1, 6, 11",
+      "Dont Op. 35 complete",
+      "Minimalist repetition endurance exercises",
+      "Sustained tone color studies"
+    ]
+  },
+  {
+    "Name": "Violin Concerto (1939)",
+    "Composer": "Walton",
+    "Level": 8,
+    "Level_alias": "Professional/Virtuoso",
+    "Style": "20th Century British",
+    "Suggested_practice": [
+      "A minor scale (3 octaves, all positions)",
+      "All keys chromatic scales",
+      "Paganini Caprices 8, 17, 24",
+      "Dont Op. 35 complete",
+      "British Romantic style exercises",
+      "Complex rhythmic exercises"
+    ]
+  }
+]

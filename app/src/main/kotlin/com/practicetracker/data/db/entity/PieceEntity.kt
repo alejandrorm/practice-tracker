@@ -14,5 +14,7 @@ data class PieceEntity(
     val pages: String?,
     val notes: String?,
     val suggestedMinutes: Int,
-    val createdAt: Instant
+    val createdAt: Instant,
+    val level: Int? = null,
+    val levelAlias: String? = null
 )

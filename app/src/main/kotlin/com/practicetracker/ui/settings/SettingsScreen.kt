@@ -160,14 +160,36 @@ fun SettingsScreen(
                 modifier = Modifier.fillMaxWidth()
             )
 
-            Text("Skill level", style = MaterialTheme.typography.labelLarge)
-            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                listOf("Beginner", "Intermediate", "Advanced", "Professional").forEach { level ->
-                    FilterChip(
-                        selected = skillLevel == level,
-                        onClick = { skillLevel = level },
-                        label = { Text(level) }
-                    )
+            val skillLevels = listOf("Beginner", "Intermediate", "Advanced", "Professional")
+            var skillDropdownExpanded by remember { mutableStateOf(false) }
+            ExposedDropdownMenuBox(
+                expanded = skillDropdownExpanded,
+                onExpandedChange = { skillDropdownExpanded = it },
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                OutlinedTextField(
+                    value = skillLevel.ifBlank { "" },
+                    onValueChange = {},
+                    readOnly = true,
+                    label = { Text("Skill level") },
+                    trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = skillDropdownExpanded) },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .menuAnchor(MenuAnchorType.PrimaryNotEditable)
+                )
+                ExposedDropdownMenu(
+                    expanded = skillDropdownExpanded,
+                    onDismissRequest = { skillDropdownExpanded = false }
+                ) {
+                    skillLevels.forEach { level ->
+                        DropdownMenuItem(
+                            text = { Text(level) },
+                            onClick = {
+                                skillLevel = level
+                                skillDropdownExpanded = false
+                            }
+                        )
+                    }
                 }
             }
 

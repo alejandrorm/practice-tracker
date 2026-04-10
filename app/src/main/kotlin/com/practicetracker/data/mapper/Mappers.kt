@@ -25,9 +25,26 @@ fun PieceWithSkills.toDomain(orderedSkillIds: List<String> = emptyList()): Piece
         notes = piece.notes,
         suggestedMinutes = piece.suggestedMinutes,
         skills = orderedSkills,
-        createdAt = piece.createdAt
+        createdAt = piece.createdAt,
+        level = piece.level,
+        levelAlias = piece.levelAlias
     )
 }
+
+fun PieceEntity.toDomain(skills: List<Skill> = emptyList()) = Piece(
+    id = id,
+    title = title,
+    type = PieceType.valueOf(type),
+    composer = composer,
+    book = book,
+    pages = pages,
+    notes = notes,
+    suggestedMinutes = suggestedMinutes,
+    skills = skills,
+    createdAt = createdAt,
+    level = level,
+    levelAlias = levelAlias
+)
 
 fun SkillEntity.toDomain() = Skill(
     id = id,
@@ -52,7 +69,9 @@ fun Piece.toEntity() = PieceEntity(
     pages = pages,
     notes = notes,
     suggestedMinutes = suggestedMinutes,
-    createdAt = createdAt
+    createdAt = createdAt,
+    level = level,
+    levelAlias = levelAlias
 )
 
 fun PlanWithEntries.toDomain(): PracticePlan {

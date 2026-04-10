@@ -67,13 +67,18 @@ class PieceEditorViewModel @Inject constructor(
         .map { it.skillLevel }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), "")
 
+    private val userInstrument: StateFlow<String> = userProfileStore.profile
+        .map { it.instrument }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), "")
+
     /** Repertoire title suggestions (shown while typing the title). */
     val repertoireSuggestions: StateFlow<List<RepertoireRepository.RepertoireEntry>> =
         title.debounce(200)
             .combine(userSkillLevel) { t, level -> t to level }
-            .map { (t, lvl) ->
+            .combine(userInstrument) { (t, level), instr -> Triple(t, level, instr) }
+            .map { (t, lvl, instr) ->
                 if (t.length < 2) emptyList()
-                else repertoireRepository.searchRepertoire(t, lvl).take(6)
+                else repertoireRepository.searchRepertoire(t, instr, lvl).take(6)
             }
             .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
 
@@ -87,13 +92,14 @@ class PieceEditorViewModel @Inject constructor(
             }
             .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
 
-    /** Practice items from violin_practice.json matching the skill search query. */
+    /** Practice items from practice.json matching the skill search query. */
     val practiceSearchResults: StateFlow<List<String>> =
         _skillSearchQuery
             .debounce(150)
-            .map { query ->
+            .combine(userInstrument) { q, instr -> q to instr }
+            .map { (query, instr) ->
                 if (query.length < 2) emptyList()
-                else repertoireRepository.searchPracticeItems(query).take(5)
+                else repertoireRepository.searchPracticeItems(query, instr).take(5)
             }
             .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
 
@@ -124,7 +130,8 @@ class PieceEditorViewModel @Inject constructor(
                     level.value = piece.level
                     levelAlias.value = piece.levelAlias
                     // Restore repertoire entry link if title matches
-                    _selectedRepertoireEntry.value = repertoireRepository.findByTitle(piece.title)
+                    _selectedRepertoireEntry.value =
+                        repertoireRepository.findByTitle(piece.title, userInstrument.value)
                 }
             }
         } else {

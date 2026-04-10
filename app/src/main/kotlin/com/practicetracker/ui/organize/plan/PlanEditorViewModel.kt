@@ -63,6 +63,10 @@ class PlanEditorViewModel @Inject constructor(
     private val _saveComplete = MutableSharedFlow<Unit>()
     val saveComplete: SharedFlow<Unit> = _saveComplete.asSharedFlow()
 
+    private val userInstrument: StateFlow<String> = userProfileStore.profile
+        .map { it.instrument }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), "")
+
     val scaleSuggestions: StateFlow<List<String>> = planEntries.map { entries ->
         val titles = entries.mapNotNull { it.piece?.title }
         SuggestionEngine.suggestScales("violin", titles)
@@ -72,18 +76,18 @@ class PlanEditorViewModel @Inject constructor(
      * Practice items suggested by the repertoire for the pieces currently in the plan.
      * Items already in the plan (by title) are excluded.
      */
-    val practiceSuggestions: StateFlow<List<String>> = planEntries.map { entries ->
-        val inPlanTitles = entries.mapNotNull { it.piece?.title }
-            .map { it.lowercase() }.toSet()
-
-        entries.flatMap { model ->
-            model.piece?.title
-                ?.let { repertoireRepository.findByTitle(it)?.suggestedPractice }
-                ?: emptyList()
-        }
-            .distinct()
-            .filter { it.lowercase() !in inPlanTitles }
-    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
+    val practiceSuggestions: StateFlow<List<String>> =
+        combine(planEntries, userInstrument) { entries, instr ->
+            val inPlanTitles = entries.mapNotNull { it.piece?.title }
+                .map { it.lowercase() }.toSet()
+            entries.flatMap { model ->
+                model.piece?.title
+                    ?.let { repertoireRepository.findByTitle(it, instr)?.suggestedPractice }
+                    ?: emptyList()
+            }
+                .distinct()
+                .filter { it.lowercase() !in inPlanTitles }
+        }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
 
     init {
         if (!isNewPlan) {
@@ -130,7 +134,7 @@ class PlanEditorViewModel @Inject constructor(
      */
     fun addSuggestedPractice(title: String) {
         viewModelScope.launch {
-            val repEntry = repertoireRepository.findByTitle(title)
+            val repEntry = repertoireRepository.findByTitle(title, userInstrument.value)
             val type = inferPieceType(title)
             val piece = pieceRepository.getOrCreatePiece(
                 title = title,

@@ -31,6 +31,13 @@ import java.time.Instant
 import java.time.temporal.ChronoUnit
 import javax.inject.Inject
 
+data class MetronomeUiState(
+    val isRunning: Boolean = false,
+    val bpm: Int = 80,
+    val beatsPerMeasure: Int = 4,
+    val currentBeat: Int = 0
+)
+
 data class ActiveSessionUiState(
     val sessionId: String = "",
     val isLoading: Boolean = true,
@@ -38,7 +45,8 @@ data class ActiveSessionUiState(
     val sessionElapsedSeconds: Long = 0L,
     val selectedPieceIndex: Int? = null,
     val entries: List<SessionEntryUiState> = emptyList(),
-    val planName: String? = null
+    val planName: String? = null,
+    val metronome: MetronomeUiState = MetronomeUiState()
 )
 
 data class SessionEntryUiState(
@@ -87,6 +95,7 @@ class ActiveSessionViewModel @Inject constructor(
     private val pieceAccumMs = mutableMapOf<String, Long>()
 
     private var tickerJob: Job? = null
+    private val metronomeManager = MetronomeManager()
 
     private val entryIds = mutableListOf<String>()
     private val entryMap = mutableMapOf<String, SessionEntry>()
@@ -95,6 +104,11 @@ class ActiveSessionViewModel @Inject constructor(
 
     init {
         viewModelScope.launch { loadSession() }
+        viewModelScope.launch {
+            metronomeManager.currentBeat.collect { beat ->
+                _uiState.update { it.copy(metronome = it.metronome.copy(currentBeat = beat)) }
+            }
+        }
     }
 
     private suspend fun loadSession() {
@@ -197,19 +211,40 @@ class ActiveSessionViewModel @Inject constructor(
 
     fun togglePause() {
         val now = System.currentTimeMillis()
-        _uiState.update { state ->
-            if (state.isPaused) {
-                val pausedDuration = now - sessionPauseStartMs
-                sessionPausedAccumulatedMs += pausedDuration
-                if (state.selectedPieceIndex != null) {
-                    activePiecePausedMs += pausedDuration
-                }
-                state.copy(isPaused = false)
-            } else {
-                sessionPauseStartMs = now
-                state.copy(isPaused = true)
-            }
+        val state = _uiState.value
+        if (state.isPaused) {
+            val pausedDuration = now - sessionPauseStartMs
+            sessionPausedAccumulatedMs += pausedDuration
+            if (state.selectedPieceIndex != null) activePiecePausedMs += pausedDuration
+            if (state.metronome.isRunning) metronomeManager.start(viewModelScope)
+            _uiState.update { it.copy(isPaused = false) }
+        } else {
+            sessionPauseStartMs = now
+            metronomeManager.stop()
+            _uiState.update { it.copy(isPaused = true) }
         }
+    }
+
+    fun toggleMetronome() {
+        val state = _uiState.value
+        val nowRunning = !state.metronome.isRunning
+        if (nowRunning && !state.isPaused) {
+            metronomeManager.start(viewModelScope)
+        } else {
+            metronomeManager.stop()
+        }
+        _uiState.update { it.copy(metronome = it.metronome.copy(isRunning = nowRunning)) }
+    }
+
+    fun setMetronomeBpm(bpm: Int) {
+        val clamped = bpm.coerceIn(MetronomeManager.BPM_MIN, MetronomeManager.BPM_MAX)
+        metronomeManager.setBpm(clamped)
+        _uiState.update { it.copy(metronome = it.metronome.copy(bpm = clamped)) }
+    }
+
+    fun setMetronomeBeatsPerMeasure(beats: Int) {
+        metronomeManager.setBeatsPerMeasure(beats)
+        _uiState.update { it.copy(metronome = it.metronome.copy(beatsPerMeasure = beats)) }
     }
 
     fun checkSkill(skillId: String) {
@@ -266,6 +301,7 @@ class ActiveSessionViewModel @Inject constructor(
 
     fun endSession() {
         tickerJob?.cancel()
+        metronomeManager.release()
         context.getSystemService(NotificationManager::class.java)
             .cancel(SessionNotificationHelper.NOTIFICATION_ID)
         viewModelScope.launch {
@@ -325,6 +361,7 @@ class ActiveSessionViewModel @Inject constructor(
     override fun onCleared() {
         super.onCleared()
         tickerJob?.cancel()
+        metronomeManager.release()
         context.getSystemService(NotificationManager::class.java)
             .cancel(SessionNotificationHelper.NOTIFICATION_ID)
     }
